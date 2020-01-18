@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>QuantWin</title>
+  
+  <subtitle>Strategyquant中文教学</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://quantwin.com.cn/"/>
+  <updated>2020-01-18T19:20:01.333Z</updated>
+  <id>http://quantwin.com.cn/</id>
+  
+  <author>
+    <name>QuantWin</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>StrategyQuant介绍</title>
+    <link href="http://quantwin.com.cn/2020/ck5jzo45v000098ukhdu62wmp/"/>
+    <id>http://quantwin.com.cn/2020/ck5jzo45v000098ukhdu62wmp/</id>
+    <published>2020-01-18T19:02:53.521Z</published>
+    <updated>2020-01-18T19:20:01.333Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>title: StrategyQuant介绍<br>date: 2020-01-19 03:02:53<br>tags: StrategyQuant,交易模型</p><hr><p><img src="/2020/ck5jzo45v000098ukhdu62wmp/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p><h1 id="StrategyQuant是干什么的"><a href="#StrategyQuant是干什么的" class="headerlink" title="StrategyQuant是干什么的"></a>StrategyQuant是干什么的</h1><p>&ensp;&ensp; StrategyQuant是为参与外汇、期货、股票、数字货币等交易者，智能化创建机械交易系统的工具。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;p&gt;title: StrategyQuant介绍&lt;br&gt;date: 2020-01-19 03:02:53&lt;br&gt;tags: StrategyQuant,交易模型&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/ck5jzo45v000098ukhdu62wm
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
