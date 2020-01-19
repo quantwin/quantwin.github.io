@@ -1,22 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>StrategyQuant下载与安装</title>
-    <url>/2020/ck5ktu6rj0000f4ukf4d6afrz/</url>
-    <content><![CDATA[<hr>
-<p>title: StrategyQuant下载与安装<br>date: 2020-01-19 16:14:16<br>categories:</p>
+    <title>StrategyQuant界面采单介绍</title>
+    <url>/2020/ck5l1lves000250uk7tod82bu/</url>
+    <content><![CDATA[<p><img src="/2020/ck5l1lves000250uk7tod82bu/layout1.png" alt>  </p>
+<h1 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h1><p>&emsp;&emsp;先看左侧菜单，从上往下依次是：  </p>
 <ul>
-<li>StrategyQuant<br>tags:</li>
-<li>StrategyQuant</li>
-<li>下载</li>
-<li>优惠码</li>
-<li>福利</li>
+<li>Getting Started  开始，一般用不到</li>
+<li>Builder  策略生成，用于首次生成策略，包括策略进一步优化尝试</li>
+<li>Retester  策略再测试，用不同的设置对策略再次测试</li>
+<li>Optimizer  策略优化，主要是参数优化和Walk-forward</li>
+<li>Data Manager  数据管理，添加测试品种，设置品种属性，下载或导入历史数据</li>
+<li>Custom Projects  自定义工程，用于设置全自动的生成，测试多步的组合开发流程</li>
+<li>AlgoWizard  用于直接将想法转成代码或制作策略风格模板  </li>
 </ul>
+<p>&emsp;&emsp;常用到的是<strong>Data Manager，Builder，Retester和Custom Projects</strong>。<strong>Optimizer</strong>用来测试策略能否通过定期优化参数来提升绩效，Walk-forward Matrix测试比较耗时。<strong>AlgoWizard</strong>对于将主观经验策略代码化，目前只对于MT4、MT5有效，但用<strong>AlgoWizard</strong>来自定义策略模板风格非常值得研究。  </p>
+<h1 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h1><h2 id="What-to-build"><a href="#What-to-build" class="headerlink" title="What to build"></a>What to build</h2><p><img src="/2020/ck5l1lves000250uk7tod82bu/builder1.png" alt>  </p>
+<p>&emsp;&emsp;左侧<strong>Stop  Pause  Start</strong>分别用于停止、暂停、开始策略的生成过程。在我们对策略生成进行必要的配置设置后，点击<strong>Start</strong>开始生成策略，<strong>Stop</strong>会完全停止生成过程，再次运行时相当于全新开始，而<strong>Pause</strong>是暂停策略的生成过程，再次<strong>Start</strong>后会接着从暂停前的状态继续工作。  </p>
+<p>&emsp;&emsp;我们一般不在<strong>Settings summary</strong>界面来进行策略生成前的设置，而是切换到<strong>Full Settings</strong> 来进行设置。  </p>
+<p><img src="/2020/ck5l1lves000250uk7tod82bu/fullsetting.png" alt>  </p>
+<p>&emsp;&emsp;目前<strong>多周期或多品种策略</strong>还不支持TS、MC。 遗传编程选项<strong>Genetic options</strong>只在有<strong>Build mode</strong>中选择<strong>Genetic evolution</strong>时才会显示。<strong>自定义策略模板生成</strong>首先需要在<strong>AlgoWizard</strong>中制作保存策略模板后才能调用使用。<strong>Improve exsting strategy</strong>可以将已有的策略导入，然后自动更改、增删策略中的信号条件、进出场设置等来研究策略有无进一步提升的空间。<strong>Strategy stytle</strong>中可以设定三种策略风格：  </p>
+<ul>
+<li>SQX Signals Style  SQX标准风格</li>
+<li>SQX Signals Style with Fuzzy Logic  使用多指标打分的形式来定义市场多空条件</li>
+<li>Old SQ3 Style  3.8旧版本风格，不推荐使用  </li>
+</ul>
+<p><img src="/2020/ck5l1lves000250uk7tod82bu/stoploss.png" alt><br>&emsp;&emsp;止损设置有三种方式：使用固定点数、使用ATR波动率、使用指标值。这里的固定点数是多少倍的最小一跳。如上海橡胶期货最小一跳为5元/吨，如果止损是100，则止损价为入场价不利偏离500时触发止损。  </p>
+<p>&emsp;&emsp;目标止盈设置与止损设置类似，只是最后多了一项风报比的设置，<strong>Limit Risk-Reward(SL vs PT) ratio</strong>。如果设置为50%，则表示如果盈利100个点止盈，则止损为200个点。对于趋势跟踪策略推荐设置100 到 500 %的搜寻范围。  </p>
+<p>&emsp;&emsp;止损原则上是要设置的，而目标止盈不一定要设置，尤其是趋势跟踪策略。</p>
+]]></content>
+      <categories>
+        <category>StrategyQuant</category>
+      </categories>
+      <tags>
+        <tag>StrategyQuant</tag>
+        <tag>界面</tag>
+        <tag>菜单</tag>
+        <tag>中文</tag>
+        <tag>汉化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>StrategyQuant下载与安装</title>
+    <url>/2020/ck5l1lve7000050uk5sz8fxhr/</url>
+    <content><![CDATA[<hr>
+<p>title: StrategyQuant下载与安装<br>date: 2020-01-19 16:14:16<br>categories: [StrategyQuant]<br>tags: [StrategyQuant,下载,优惠码,福利]</p>
 <hr>
-<p><img src="/2020/ck5ktu6rj0000f4ukf4d6afrz/laptop_screen-1.png" alt>  </p>
+<p><img src="/2020/ck5l1lve7000050uk5sz8fxhr/laptop_screen-1.png" alt>  </p>
 <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>&emsp;&emsp;StrategyQuant非常厚道地提供了14天的免费试用，并且软件功能上无任何限制。（内置的数据源下载因为某些众周知的原因可能无法使用。不过本来这也不是我们看重的功能。）StrategyQuant软件的重点是根据历史数据来自动生成测试策略，至于数据嘛我们还是自己来处理比较好。  </p>
 <p>&emsp;&emsp;打开<a href="https://strategyquant.com/" target="_blank" rel="noopener">StrategyQuant官网</a> 。左键单击右上角的<strong>Download</strong>，跳转到下载页面。  </p>
-<p><img src="/2020/ck5ktu6rj0000f4ukf4d6afrz/download.png" alt>  </p>
+<p><img src="/2020/ck5l1lve7000050uk5sz8fxhr/download.png" alt>  </p>
 <p>&emsp;&emsp;在比较显著的位置，这个蓝底白字的按扭是Strategyquant的安装器，类似于一个安装引导程序，然后在安装过程先下载主体安装程序后再安装。由于某些特殊原因，国内用户往往会下载安装失败。所以推荐下面的安装方式。  </p>
 <h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p>&emsp;&emsp;滚动网页向下，看到<strong>Download as ZIP</strong> 。 这里是离线安装包。  </p>
 <p>&emsp;&emsp;<strong>StrategyQuant X as ZIP archive</strong> ，是全新安装包，大小约300-500M，最好是使用工具下载。  </p>
@@ -24,7 +57,7 @@
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>&emsp;&emsp;StrategyQuant是用Java写的程序，而且它的安装非常简单。我们将下载的文件解压到任意目录下就可以运行。升级时，只需要将下载的update文件，解压后，复制到程序目录全部覆盖即可。  </p>
 <p>&emsp;&emsp;StrategyQuantX.exe文件为主程序。左键双击启动。首次启动需要输入license number。  </p>
 <h1 id="申请试用许可码"><a href="#申请试用许可码" class="headerlink" title="申请试用许可码"></a>申请试用许可码</h1><p>&emsp;&emsp;在<a href="https://strategyquant.com/download/" target="_blank" rel="noopener">下载页面</a>，右上角有一个<strong>Free trial</strong>的绿色按扭。左键单击它，跳转到申请<br>页面。输入名字和邮件地址。名字随便写，但邮件一定要正确。然后左键单击绿色按扭<strong>Get Free Trial Now</strong>。  </p>
-<p><img src="/2020/ck5ktu6rj0000f4ukf4d6afrz/email.png" alt>  </p>
+<p><img src="/2020/ck5l1lve7000050uk5sz8fxhr/email.png" alt>  </p>
 <p>&emsp;&emsp;稍等片刻，检查你的收件箱或垃圾邮件文件夹，会收到一份邮件，里面有许可码。申请到试用许可码后。再次打开StrategyquantX，输入该许可码，然后左键单击<strong>Verify license</strong>按扭。如果网络没有问题，稍等片刻，即可进入到Strategyquant程序。  </p>
 <h1 id="福利"><a href="#福利" class="headerlink" title="福利"></a>福利</h1><p>&emsp;&emsp;建议大家支持正版。网上虽然有和谐版，但一般比较旧，目前Strategyquant还在滚动升级中，不断修复Bug和实现些一些新的功能。更重要的，只有用户的支持，StrategyQuant才能走地长远，越做越好。如果试用感觉工具有用，强烈建议购买。  </p>
 <p>&emsp;&emsp;在主页里，点击Pricing。建议选择专业版Professional或旗舰版Ultimate。  </p>
@@ -33,15 +66,15 @@
   </entry>
   <entry>
     <title>StrategyQuant介绍</title>
-    <url>/2020/ck5ktu6ro0002f4uk5d9s2mwm/</url>
+    <url>/2020/ck5l1lvec000150uk15705dfc/</url>
     <content><![CDATA[<hr>
-<p>title: StrategyQuant介绍<br>date: 2020-01-19 03:02:53<br>categories: StrategyQuant<br>tags: StrategyQuant,交易模型</p>
+<p>title: StrategyQuant介绍<br>date: 2020-01-19 03:02:53<br>categories: [StrategyQuant]<br>tags: [StrategyQuant,交易模型]</p>
 <hr>
-<p><img src="/2020/ck5ktu6ro0002f4uk5d9s2mwm/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p>
+<p><img src="/2020/ck5l1lvec000150uk15705dfc/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p>
 <h1 id="StrategyQuant是干什么的"><a href="#StrategyQuant是干什么的" class="headerlink" title="StrategyQuant是干什么的"></a>StrategyQuant是干什么的</h1><p>&emsp;&emsp;StrategyQuant是为参与外汇、期货、股票、数字货币等交易者，智能化创建机械交易系统的工具。StrategyQuant几乎不需要任何编程经验，它通过简单的设置就<br>可以在短时间内生成大量的交易策略，这些交易策略可以直接复制到MT4，MT5，Multicharts，Tradestation中作为EA或信号策略使用。  </p>
 <p>&emsp;&emsp;如果你是一位信奉机械系统获利的交易者，StrategyQuant是你开发交易策略非常得力的工具。  </p>
 <h1 id="StrategyQuant是如何做到的"><a href="#StrategyQuant是如何做到的" class="headerlink" title="StrategyQuant是如何做到的"></a>StrategyQuant是如何做到的</h1><p>&emsp;&emsp;StrategyQuant使用随机生成（Random generation）和遗传进化（Genetic evolution）两种方式来生成、测试策略。<br>&emsp;&emsp;StrategyQuant将信号（指标条件化，如：收盘价&gt;20天均价，CCI&gt;50等），指标，各种入场方式和出场方式视为构建策略的元素，然后自动生成策略，也就是交易模型，并根据设置在历史数据上测试。 </p>
-<p><img src="/2020/ck5ktu6ro0002f4uk5d9s2mwm/entry.png" alt>  </p>
+<p><img src="/2020/ck5l1lvec000150uk15705dfc/entry.png" alt>  </p>
 <h2 id="入场类型、订单类型、Order-types"><a href="#入场类型、订单类型、Order-types" class="headerlink" title="入场类型、订单类型、Order types"></a>入场类型、订单类型、Order types</h2><ul>
 <li>市价单 </li>
 <li>市价/反转入场单 </li>
