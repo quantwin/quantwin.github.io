@@ -2,10 +2,10 @@
 <search>
   <entry>
     <title>StrategyQuant界面菜单介绍3</title>
-    <url>/2020/ck5nxorv40008b8uk9rio768j/</url>
+    <url>/2020/ck5ny5v4l00089kukdpwf7j4d/</url>
     <content><![CDATA[<p>在<strong>遗传编程选项</strong>中的进化控制中，我们会根据种群策略在历史数据的样本内数据（验证部分）的表现来决定进化过程是否继续还是重新生成初始种群开始。这里可以用到不同的数据集，样本内（全部），样本内（训练部分），样本外（验证部分）。  </p>
 <p>数据分段设置，是减少策略过拟合风险一项必要的基本设置。  </p>
-<h1 id="Data-数据及回测引擎设置"><a href="#Data-数据及回测引擎设置" class="headerlink" title="Data 数据及回测引擎设置"></a>Data 数据及回测引擎设置</h1><p><img src="/2020/ck5nxorv40008b8uk9rio768j/data.png" alt>  </p>
+<h1 id="Data-数据及回测引擎设置"><a href="#Data-数据及回测引擎设置" class="headerlink" title="Data 数据及回测引擎设置"></a>Data 数据及回测引擎设置</h1><p><img src="/2020/ck5ny5v4l00089kukdpwf7j4d/data.png" alt>  </p>
 <p><strong>回测引擎</strong>，目前支持MT4、MT5、TS、MC。  </p>
 <p><strong>测试品种数据</strong>，设定交易品种Symbol。策略运行的周期Timeframe，如果导入的是1分钟周期，可以自定义使用像10分钟、20分钟这类非常规的周期。并通过Start day 和 End day 来指定数据范围。  </p>
 <p><strong>测试参数</strong>设置测试精度Precision，直接使用策略运行的周期框架，也可以使用较为精细的1分钟周期数据。手续费Commision设置，主要针对期货和股票，有每手固定金额和每手合约价值%两种方式，注意手续费是进场和出场两边合并一起计算的。价差成本Spread，主要针对外汇交易而言。滑点设置Slippage是多少个最小一跳。Min. distance主要针对外汇平台，可能会对开平仓最小价差间距有要求而设定的。  </p>
@@ -67,8 +67,8 @@
 <li>Crypto size by price 用于数字货币的仓位管理</li>
 <li>Stocks size by price 用于股票交易的仓位管理  </li>
 </ul>
-<h1 id="Cross-checks-robustness-健壮测试"><a href="#Cross-checks-robustness-健壮测试" class="headerlink" title="Cross checks(robustness) 健壮测试"></a>Cross checks(robustness) 健壮测试</h1><p><img src="/2020/ck5nxorv40008b8uk9rio768j/cross.png" alt>  </p>
-<h1 id="Ranking-设定"><a href="#Ranking-设定" class="headerlink" title="Ranking 设定"></a>Ranking 设定</h1><p><img src="/2020/ck5nxorv40008b8uk9rio768j/rank.png" alt>  </p>
+<h1 id="Cross-checks-robustness-健壮测试"><a href="#Cross-checks-robustness-健壮测试" class="headerlink" title="Cross checks(robustness) 健壮测试"></a>Cross checks(robustness) 健壮测试</h1><p><img src="/2020/ck5ny5v4l00089kukdpwf7j4d/cross.png" alt>  </p>
+<h1 id="Ranking-设定"><a href="#Ranking-设定" class="headerlink" title="Ranking 设定"></a>Ranking 设定</h1><p><img src="/2020/ck5ny5v4l00089kukdpwf7j4d/rank.png" alt>  </p>
 ]]></content>
       <categories>
         <category>StrategyQuant</category>
@@ -86,7 +86,7 @@
   </entry>
   <entry>
     <title>StrategyQuant界面菜单介绍2</title>
-    <url>/2020/ck5nxorv30007b8uk7adkdn4s/</url>
+    <url>/2020/ck5ny5v4k00079kuk05i05pai/</url>
     <content><![CDATA[<h1 id="Genetic-options-遗传编程选项"><a href="#Genetic-options-遗传编程选项" class="headerlink" title="Genetic options 遗传编程选项"></a>Genetic options 遗传编程选项</h1><p><strong>What to build</strong>中如果选择了遗传进化的策略生成模式，接下来是遗传编程的选项设置。  </p>
 <ul>
 <li>Genetic options  遗传编程常规选项</li>
@@ -106,12 +106,12 @@
 <p>也是 GP或GA中的基本设置之一。在策略生成过程中，突变概率控制策略内部的构建块更换的概率。数值越大，越容易获得多样化的策略。交叉概率 和 变异概率的设置范围没有标准的范围参考,但可以简单理解，交叉概率越大，策略相似性越大，突变概率越大越容易生成多样化的策略。  </p>
 <h2 id="Islands-options"><a href="#Islands-options" class="headerlink" title="Islands options"></a>Islands options</h2><p>岛的概念进一步模拟了现实世界的进化过程。每个岛一开始是独立的种群，然后通过<strong>Islands</strong>岛的数量、每进化多少代移民（岛之间交换策略）<strong>Migrate every Xth generation</strong> 和 移民比例 <strong>Population migration rate</strong> 三个选项来控制岛对总体种群进化的影响。  </p>
 <p><strong>Islands</strong>的数量建议设置范围1-10。<br><strong>Migrate every Xth generation</strong>的建议设置范围为左右<strong>Max # of Generations</strong>的1/4到2/3，但不要设置太小。推荐值为10。<br><strong>Population migration rate</strong> 建议值为1-5个策略，如果左侧种群数量为100，则这个移民率设置为1%-5%。  </p>
-<h2 id="Initial-population-generation"><a href="#Initial-population-generation" class="headerlink" title="Initial population generation"></a>Initial population generation</h2><p><img src="/2020/ck5nxorv30007b8uk7adkdn4s/initialpopulation.png" alt>  </p>
+<h2 id="Initial-population-generation"><a href="#Initial-population-generation" class="headerlink" title="Initial population generation"></a>Initial population generation</h2><p><img src="/2020/ck5ny5v4k00079kuk05i05pai/initialpopulation.png" alt>  </p>
 <p><strong>Use strategies from Initial population databank as evolution start</strong> 使用已有策略来作为初始策略库来开始进化，如果导入的策略数量达到要求的种群大小，StrategyQuant会进一步随机生成策略，直到达到设置所要求的数量。 </p>
 <p>当打开该选项时，下方数据库里会多出一个叫<strong>Initial population</strong>的数据库，点击它下方的Load按扭来导入已有的Strategyquant策略。  </p>
 <p><strong>Generated decimation coefficient</strong> 抽取系数。其实这里叫做生成倍数似乎更容易理解。举例说明，假设前面通过设置种群大小和岛数，使初始策略种群为400个策略，如果设置抽取系数为3，则表示一开始要生成1200个通过了右侧过滤条件的策略，然后从中选出排名前400个策略来作为初始种群。通过这项设置可以进一步提升初始策略的质量，但会需要电脑更多的计算时间。你要关注总体的初始策略数量（如本例中的1200），根据电脑性能合理设置以上有关选项。  </p>
 <h2 id="Filter-generated-initial-population"><a href="#Filter-generated-initial-population" class="headerlink" title="Filter generated initial population"></a>Filter generated initial population</h2><p>用于过滤、筛选初始策略。注意这里不要使用过于严格绩效评价限制。推荐只使用#trades &gt; 0 或 net profit &gt; 0 等条件。  </p>
-<h2 id="“Fresh-blood”"><a href="#“Fresh-blood”" class="headerlink" title="“Fresh blood”"></a>“Fresh blood”</h2><p><img src="/2020/ck5nxorv30007b8uk7adkdn4s/fresh.png" alt>  </p>
+<h2 id="“Fresh-blood”"><a href="#“Fresh-blood”" class="headerlink" title="“Fresh blood”"></a>“Fresh blood”</h2><p><img src="/2020/ck5ny5v4k00079kuk05i05pai/fresh.png" alt>  </p>
 <h2 id="Evolution-management"><a href="#Evolution-management" class="headerlink" title="Evolution management"></a>Evolution management</h2><p>最后这两项设置里评价策略好坏，是基于后面<strong>Ranking</strong>里的设置，图例为建议打开的选项。具体数值可以根据前面设置来调整这里的具体数值或范围。  </p>
 ]]></content>
       <categories>
@@ -127,11 +127,11 @@
   </entry>
   <entry>
     <title>StrategyQuant下载与安装</title>
-    <url>/2020/ck5nxorut0000b8uk32ao1hyo/</url>
-    <content><![CDATA[<p><img src="/2020/ck5nxorut0000b8uk32ao1hyo/laptop_screen-1.jpg" alt>  </p>
+    <url>/2020/ck5ny5v4a00009kuk7tw91u9x/</url>
+    <content><![CDATA[<p><img src="/2020/ck5ny5v4a00009kuk7tw91u9x/laptop_screen-1.jpg" alt>  </p>
 <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>&emsp;&emsp;StrategyQuant非常厚道地提供了14天的免费试用，并且软件功能上无任何限制。（内置的数据源下载因为某些众周知的原因可能无法使用。不过本来这也不是我们看重的功能。）StrategyQuant软件的重点是根据历史数据来自动生成测试策略，至于数据嘛我们还是自己来处理比较好。  </p>
 <p>&emsp;&emsp;打开<a href="https://strategyquant.com/" target="_blank" rel="noopener">StrategyQuant官网</a> 。左键单击右上角的<strong>Download</strong>，跳转到下载页面。  </p>
-<p><img src="/2020/ck5nxorut0000b8uk32ao1hyo/download.png" alt>  </p>
+<p><img src="/2020/ck5ny5v4a00009kuk7tw91u9x/download.png" alt>  </p>
 <p>&emsp;&emsp;在比较显著的位置，这个蓝底白字的按扭是Strategyquant的安装器，类似于一个安装引导程序，然后在安装过程先下载主体安装程序后再安装。由于某些特殊原因，国内用户往往会下载安装失败。所以推荐下面的安装方式。  </p>
 <h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p>&emsp;&emsp;滚动网页向下，看到<strong>Download as ZIP</strong> 。 这里是离线安装包。  </p>
 <p>&emsp;&emsp;<strong>StrategyQuant X as ZIP archive</strong> ，是全新安装包，大小约300-500M，最好是使用工具下载。  </p>
@@ -139,7 +139,7 @@
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>&emsp;&emsp;StrategyQuant是用Java写的程序，而且它的安装非常简单。我们将下载的文件解压到任意目录下就可以运行。升级时，只需要将下载的update文件，解压后，复制到程序目录全部覆盖即可。  </p>
 <p>&emsp;&emsp;StrategyQuantX.exe文件为主程序。左键双击启动。首次启动需要输入license number。  </p>
 <h1 id="申请试用许可码"><a href="#申请试用许可码" class="headerlink" title="申请试用许可码"></a>申请试用许可码</h1><p>&emsp;&emsp;在<a href="https://strategyquant.com/download/" target="_blank" rel="noopener">下载页面</a>，右上角有一个<strong>Free trial</strong>的绿色按扭。左键单击它，跳转到申请<br>页面。输入名字和邮件地址。名字随便写，但邮件一定要正确。然后左键单击绿色按扭<strong>Get Free Trial Now</strong>。  </p>
-<p><img src="/2020/ck5nxorut0000b8uk32ao1hyo/email.png" alt>  </p>
+<p><img src="/2020/ck5ny5v4a00009kuk7tw91u9x/email.png" alt>  </p>
 <p>&emsp;&emsp;稍等片刻，检查你的收件箱或垃圾邮件文件夹，会收到一份邮件，里面有许可码。申请到试用许可码后。再次打开StrategyquantX，输入该许可码，然后左键单击<strong>Verify license</strong>按扭。如果网络没有问题，稍等片刻，即可进入到Strategyquant程序。  </p>
 <h1 id="福利"><a href="#福利" class="headerlink" title="福利"></a>福利</h1><p>&emsp;&emsp;建议大家支持正版。网上虽然有和谐版，但一般比较旧，目前Strategyquant还在滚动升级中，不断修复Bug和实现些一些新的功能。更重要的，只有用户的支持，StrategyQuant才能走地长远，越做越好。如果试用感觉工具有用，强烈建议购买。  </p>
 <p>&emsp;&emsp;在主页里，点击Pricing。建议选择专业版Professional或旗舰版Ultimate。  </p>
@@ -157,12 +157,12 @@
   </entry>
   <entry>
     <title>StrategyQuant介绍</title>
-    <url>/2020/ck5nxoruy0002b8uk1dd7b73z/</url>
-    <content><![CDATA[<p><img src="/2020/ck5nxoruy0002b8uk1dd7b73z/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p>
+    <url>/2020/ck5ny5v4g00029kuk9pp1f0gx/</url>
+    <content><![CDATA[<p><img src="/2020/ck5ny5v4g00029kuk9pp1f0gx/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p>
 <h1 id="StrategyQuant是干什么的"><a href="#StrategyQuant是干什么的" class="headerlink" title="StrategyQuant是干什么的"></a>StrategyQuant是干什么的</h1><p>&emsp;&emsp;StrategyQuant是为参与外汇、期货、股票、数字货币等交易者，智能化创建机械交易系统的工具。StrategyQuant几乎不需要任何编程经验，它通过简单的设置就<br>可以在短时间内生成大量的交易策略，这些交易策略可以直接复制到MT4，MT5，Multicharts，Tradestation中作为EA或信号策略使用。  </p>
 <p>&emsp;&emsp;如果你是一位信奉机械系统获利的交易者，StrategyQuant是你开发交易策略非常得力的工具。  </p>
 <h1 id="StrategyQuant是如何做到的"><a href="#StrategyQuant是如何做到的" class="headerlink" title="StrategyQuant是如何做到的"></a>StrategyQuant是如何做到的</h1><p>&emsp;&emsp;StrategyQuant使用随机生成（Random generation）和遗传进化（Genetic evolution）两种方式来生成、测试策略。<br>&emsp;&emsp;StrategyQuant将信号（指标条件化，如：收盘价&gt;20天均价，CCI&gt;50等），指标，各种入场方式和出场方式视为构建策略的元素，然后自动生成策略，也就是交易模型，并根据设置在历史数据上测试。 </p>
-<p><img src="/2020/ck5nxoruy0002b8uk1dd7b73z/entry.png" alt>  </p>
+<p><img src="/2020/ck5ny5v4g00029kuk9pp1f0gx/entry.png" alt>  </p>
 <h2 id="入场类型、订单类型、Order-types"><a href="#入场类型、订单类型、Order-types" class="headerlink" title="入场类型、订单类型、Order types"></a>入场类型、订单类型、Order types</h2><ul>
 <li>市价单 </li>
 <li>市价/反转入场单 </li>
@@ -222,8 +222,8 @@
   </entry>
   <entry>
     <title>StrategyQuant界面菜单介绍</title>
-    <url>/2020/ck5nxorv20006b8ukhuyg62u1/</url>
-    <content><![CDATA[<p><img src="/2020/ck5nxorv20006b8ukhuyg62u1/layout1.jpg" alt>  </p>
+    <url>/2020/ck5ny5v4j00069kuk20rz0ew6/</url>
+    <content><![CDATA[<p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/layout1.jpg" alt>  </p>
 <h1 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h1><p>先看左侧菜单，从上往下依次是：  </p>
 <ul>
 <li>Getting Started  开始，一般用不到</li>
@@ -235,10 +235,10 @@
 <li>AlgoWizard  用于直接将想法转成代码或制作策略风格模板  </li>
 </ul>
 <p>&emsp;&emsp;常用到的是<strong>Data Manager，Builder，Retester和Custom Projects</strong>。<strong>Optimizer</strong>用来测试策略能否通过定期优化参数来提升绩效，Walk-forward Matrix测试比较耗时。<strong>AlgoWizard</strong>对于将主观经验策略代码化，目前只对于MT4、MT5有效，但用<strong>AlgoWizard</strong>来自定义策略模板风格非常值得研究。  </p>
-<h1 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h1><p><img src="/2020/ck5nxorv20006b8ukhuyg62u1/builder1.png" alt>  </p>
+<h1 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h1><p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/builder1.png" alt>  </p>
 <p>&emsp;&emsp;左侧<strong>Stop  Pause  Start</strong>分别用于停止、暂停、开始策略的生成过程。在我们对策略生成进行必要的配置设置后，点击<strong>Start</strong>开始生成策略，<strong>Stop</strong>会完全停止生成过程，再次运行时相当于全新开始，而<strong>Pause</strong>是暂停策略的生成过程，再次<strong>Start</strong>后会接着从暂停前的状态继续工作。  </p>
 <p>&emsp;&emsp;我们一般不在<strong>Settings summary</strong>界面来进行策略生成前的设置，而是切换到<strong>Full Settings</strong> 来进行设置。<strong>Full Settings</strong> 里有策略生成设置所有设置项，包括<strong>What to build，Genetic options，Data，Trading Options，Building options，Money management，Cross checks，Ranking，Notes</strong>。  </p>
-<p><img src="/2020/ck5nxorv20006b8ukhuyg62u1/fullsetting.png" alt>  </p>
+<p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/fullsetting.png" alt>  </p>
 <h2 id="What-to-build"><a href="#What-to-build" class="headerlink" title="What to build"></a>What to build</h2><h3 id="Strategy-type-策略类型"><a href="#Strategy-type-策略类型" class="headerlink" title="Strategy type 策略类型"></a>Strategy type 策略类型</h3><p><strong>Strategy type</strong>里指定本次要生成什么类型的策略。  </p>
 <ul>
 <li>简单策略。默认选项，适合大多数情况  </li>
@@ -252,7 +252,7 @@
 <li>SQX Signals Style with Fuzzy Logic  使用多指标打分的形式来定义市场多空条件</li>
 <li>Old SQ3 Style  3.8旧版本风格，不推荐使用  </li>
 </ul>
-<p><img src="/2020/ck5nxorv20006b8ukhuyg62u1/stoploss.png" alt><br>&emsp;&emsp;止损设置有三种方式：使用固定点数、使用ATR波动率、使用指标值。这里的固定点数是多少倍的最小一跳。如上海橡胶期货最小一跳为5元/吨，如果止损是100，则止损价为入场价不利偏离500时触发止损。  </p>
+<p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/stoploss.png" alt><br>&emsp;&emsp;止损设置有三种方式：使用固定点数、使用ATR波动率、使用指标值。这里的固定点数是多少倍的最小一跳。如上海橡胶期货最小一跳为5元/吨，如果止损是100，则止损价为入场价不利偏离500时触发止损。  </p>
 <p>&emsp;&emsp;目标止盈设置与止损设置类似，只是最后多了一项风报比的设置，<strong>Limit Risk-Reward(SL vs PT) ratio</strong>。如果设置为50%，则表示如果盈利100个点止盈，则止损为200个点。对于趋势跟踪策略推荐设置100 到 500 %的搜寻范围。  </p>
 <p>&emsp;&emsp;止损原则上是要设置的，而目标止盈不一定要设置，尤其是趋势跟踪策略。</p>
 ]]></content>
