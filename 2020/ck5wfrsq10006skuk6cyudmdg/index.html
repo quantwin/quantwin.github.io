@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="Strategyquant,策略,模型,EA,程序化" />
+   
+  <meta name="description" content="Strategyquant中文教学,交易策略自动生成,期货外汇模型智能生成" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    StrategyQuant导入测试数据 |  QuantWin
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/easyicon_net_32.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="QuantWin" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-StrategyQuant导入测试数据" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  StrategyQuant导入测试数据
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/ck5wfrsq10006skuk6cyudmdg/" class="article-date">
+  <time datetime="2020-01-23T06:09:28.000Z" itemprop="datePublished">2020-01-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/StrategyQuant/">StrategyQuant</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+ 
+      
+
+
+      
+
+      
+      <p><strong>StrategyQuant</strong>创建交易策略的大体流程分为:  </p>
+<ul>
+<li>导入历史价格数据，新交易品种需要先设定品种属性</li>
+<li>设置Builde有关选项，运行开始生成策略</li>
+<li>对策略进行健壮测试</li>
+<li>将策略复制到相应程序化交易平台测试运行<a id="more"></a>  
+
+
+</li>
+</ul>
+<p>本篇文章将介绍如果在Strategyquant里创建品种，设定品种有属性，并导入从Multicharts中导出的历史数据。  </p>
+<h1 id="设置品种"><a href="#设置品种" class="headerlink" title="设置品种"></a>设置品种</h1><p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/dataset.png" alt>  </p>
+<p>首先切换到<strong>Data Manager 数据管理</strong>功能，按照上图所示，左键单击<strong>File import</strong>，然后选择<strong>Add sysmbol</strong>。  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/addsymbol.png" alt>  </p>
+<p>上半部分是设定品种名称以及K线的时间是K线开始时间还是结束时间，MultiCharts里导出的数据的是K线结束的时间。下半部分是指定具体的品种属性，如果<strong>Instrument</strong>下拉选择框没有这个品种属性，需要<strong>Add new instruement</strong>来添加品种属性。一个品种属性，可以对应多个品种（名称），譬如我可以添加黄金主连合约价格、黄金指数合约价格、黄金主连价差调整连续合约或者黄金30分钟K线数据，都是对应黄金这个品种属性。  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/instru.png" alt>  </p>
+<ul>
+<li>Instrument 品种属性名称，名称随便起，不过建议用有意义、易区分的名称</li>
+<li>Description 品种描述，可以忽略不填</li>
+<li>Data type 数据类型，主要是区分是外汇，还是期货或股票等</li>
+<li>Point value 点价值，即一标准手的合约价值。以期货为例，与交易单位和报价单位相关。黄金期货交易单位是1000克/手，报价单位是元/克，所以point value 是 1000；鸡蛋交易单位是5吨/手，而报价单位是元/0.5吨，所以point value是10；股指期货IF的合约乘数为每点300元，即point value为300。</li>
+<li>pip/tick size 用于结算的最小一跳，对期货而言即最小一跳，如黄金期货为0.02元/克。外汇是小数点4位那个时代的报价精度。</li>
+<li>pip/tick step 报价的最小一跳，对期货而言与pip/tick size是一样的。外汇已经普遍是5位小数报价了。</li>
+<li>Default spread 价差成本，主要针对外汇而言，是交易成本。期货品种忽略此项。  </li>
+</ul>
+<p>手续费设置，是双边合计计算的。国内期货的征收方式主要是合约价值百分比和每手固定金额两种方式。 </p>
+<ul>
+<li>No  不设置手续费</li>
+<li>per Trade  每笔交易固定金额</li>
+<li>Percentage based   合约价值百分比</li>
+<li>Size based   每手固定金额  </li>
+</ul>
+<p>设置完毕后，点击Save保存，返回到<strong>Edit symbol</strong>品种设置界面，点击Save保存。  </p>
+<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p>如果我想导入黄金主连合约数据和黄金指数合约数据，只有增添加两个品种然后都指定是黄金期货属性，因为这两个价格序列是完全不同的价格序列。而如果我想用到30分钟K线的黄金主连数据，也可能会用到60分钟K线黄金主连数据，就有两种方式。  </p>
+<ul>
+<li>新建两个品种，如AU_30MIn，AU_60min</li>
+<li>或导入1分钟数据，然后让SQ合成30分钟和60分钟数据  </li>
+</ul>
+<p>第一种方式的好处是与原平台数据完全一致，弊端是可能需要一个品种做多次导入；第二种方式好处一次导入可以供不同周期调用，包括非常见的分钟周期，如20分钟，45分钟，2小时之类 ；另外可以使用1分钟精细数据回测，绩效评价更准确（目前只支持MT4，MT5）。但要求必须设置好交易小节Sessions，否则会导致大周期数据合成错误，另外目前国内期货夜盘品种，用1分钟周期数据合成日线数据都不准确。因为老外根本不能想象国内市场的这种结算日的划分方式。  </p>
+<p>个人建议：  </p>
+<ul>
+<li>分钟级别策略，如30分钟，60分钟，建议使用1分钟数据</li>
+<li>日线级别策略，直接使用日线数据  </li>
+</ul>
+<h2 id="从Multicharts导出历史数据"><a href="#从Multicharts导出历史数据" class="headerlink" title="从Multicharts导出历史数据"></a>从Multicharts导出历史数据</h2><p>在Multihcarts里新建一个<strong>图表窗口</strong>，添加黄金期货，  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/au_a.png" alt><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/au_b.png" alt>  </p>
+<p>待历史数据全部载入完成，导入该数据,注意,不要选择<strong>同步导出指标数据</strong><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/export.png" alt><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/export2.png" alt>   </p>
+<h2 id="StrategyQuant导入历史数据"><a href="#StrategyQuant导入历史数据" class="headerlink" title="StrategyQuant导入历史数据"></a>StrategyQuant导入历史数据</h2><p>在SQ中，接上一步，在Data品种列表里找到刚才添加的品种<strong>SHFE_AU</strong>并选中，然后点击上方的<strong>File import</strong> - <strong>Import file</strong>，  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/importa.png" alt>  </p>
+<p>然后弹出数据导入窗口,  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/importb.png" alt>  </p>
+<p>首先需要设置文件格式，对于MC导出的历史数据文件，首先要跳过第一行的名称，选择逗号分割，设定日期格式，并为数据每列指定是什么栏目，最后可以点击中间的<strong>Save</strong>来保存成预设的数据格式，方便以后数据格式的识别与导入。设置完成后<strong>Start Import</strong>开始导入，当下方品种列表靠右侧列显示Completed即表示导入完成。  </p>
+<h1 id="设置Sessions-交易小节"><a href="#设置Sessions-交易小节" class="headerlink" title="设置Sessions 交易小节"></a>设置Sessions 交易小节</h1><p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/sessioninmc.png" alt>  </p>
+<p>Sessions设置主要作用是标识交易时段的开始与结束，以及当天交易最后结束结算的时间。如果你在SQ中使用1分钟数据来合成大周期级别的数据，这个交易小节设置非常重要。  </p>
+<p>首先，在Multicharts中打开报<strong>报价管理器</strong>，找到相应的期货市场与品种，然后在品种合约（该品种任意合约）双击，最后切换到<strong>交易时段</strong>标签页，看到MC中的Sessions设置。根据这里的设置，在SQ中增加Sessions设置。  </p>
+<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/sessioninsq.png" alt>  </p>
+<p>在SQ中，依次找到<strong>Data manager</strong>，<strong>Session</strong>，<strong>Add session</strong>，找开添加小节设置模板<strong>Add session template</strong>。<strong>Session name</strong>随便写，只要合成数据或者策略生成回测中的<strong>Trading options</strong>正确指定品种对应的小节设置即可。我们这里取名为AU_AG，因为黄金、白银具有完全相同的交易时间，这个Sessions设置可以供这两个品种使用。<br>目前SQ这里的设置并不是很友好，或许开发者并不了解国内市场设置的繁琐程度。我们需要对<strong>每一天的每个时段</strong>单独ADD添加。注意这里的小节划分或许与交易所实际的规定并不完全一致，因为这里的原则，是将SQ中的设置与你所运行策略的交易平台，如Multicharts中设置的小节划分保持一致。  </p>
+<p><strong>注意每天的13:00-15:00时间段，最每个交易日结算前的最后一个交易时段，所以SEOC设置为YES</strong>。  </p>
+<p>最后，我们可以使用Data manager中的Export导出功能，导出某个大周期，譬如30分钟周期数据，然后与MC中导出的30分钟周期数据进行对比。</p>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://quantwin.com.cn/2020/ck5wfrsq10006skuk6cyudmdg/" data-id="ck5wfrsq10006skuk6cyudmdg"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiCharts/" rel="tag">MultiCharts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sesstion/" rel="tag">Sesstion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StrategyQuant/" rel="tag">StrategyQuant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE/" rel="tag">数据</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+    
+      <a href="/2020/ck5wfrsq5000bskuk3kxg0bjl/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">StrategyQuant界面菜单介绍3</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2015-2020
+        QuantWin
+      </li>
+    </ul>
+    <ul class="list-inline">
+    
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+    
+    <aside class="sidebar">
+      
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="QuantWin"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">文章</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+			onClick: (e) => {
+      	document.getElementById(e.target.innerText).scrollIntoView()
+      	return false;
+    	}
+    });
+  </script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  
+  
+
+  </div>
+</body>
+
+</html>

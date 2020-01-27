@@ -10,7 +10,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    StrategyQuant界面菜单介绍 |  QuantWin
+    StrategyQuant介绍 |  QuantWin
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-StrategyQuant界面菜单介绍" class="article article-type-post" itemscope
+  <article id="post-StrategyQuant介绍" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -44,7 +44,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  StrategyQuant界面菜单介绍
+  StrategyQuant介绍
 </h1>
   
 
@@ -53,7 +53,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ck5ny5v4j00069kuk20rz0ew6/" class="article-date">
+      <a href="/2020/ck5wfrspx0002skukaxb954t3/" class="article-date">
   <time datetime="2020-01-19T11:14:02.000Z" itemprop="datePublished">2020-01-19</time>
 </a>
       
@@ -68,7 +68,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">837字</span>
+            <span class="post-count">648字</span>
         </span>
     </span>
 
@@ -77,7 +77,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">2分钟</span>
         </span>
     </span>
 </div>
@@ -104,38 +104,60 @@
       
 
       
-      <p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/layout1.jpg" alt>  </p>
-<h1 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h1><p>先看左侧菜单，从上往下依次是：  </p>
-<ul>
-<li>Getting Started  开始，一般用不到</li>
-<li>Builder  策略生成，用于首次生成策略，包括策略进一步优化尝试</li>
-<li>Retester  策略再测试，用不同的设置对策略再次测试</li>
-<li>Optimizer  策略优化，主要是参数优化和Walk-forward</li>
-<li>Data Manager  数据管理，添加测试品种，设置品种属性，下载或导入历史数据</li>
-<li>Custom Projects  自定义工程，用于设置全自动的生成，测试多步的组合开发流程</li>
-<li>AlgoWizard  用于直接将想法转成代码或制作策略风格模板  </li>
+      <p><img src="/2020/ck5wfrspx0002skukaxb954t3/sq_x_blue.png" alt="StrategyQuant最新版本 SQ X"> </p>
+<h1 id="StrategyQuant是干什么的"><a href="#StrategyQuant是干什么的" class="headerlink" title="StrategyQuant是干什么的"></a>StrategyQuant是干什么的</h1><p>&emsp;&emsp;StrategyQuant是为参与外汇、期货、股票、数字货币等市场的交易者，智能化创建机械交易系统的工具。StrategyQuant几乎不需要任何编程经验，它通过简单的设置就可以在短时间内生成大量的交易策略，这些交易策略可以直接复制到MT4，MT5，Multicharts，Tradestation中作为EA或信号策略进行程序自动化交易使用。  </p>
+<a id="more"></a>  
+<p>&emsp;&emsp;如果你是一位信奉机械系统获利的交易者，StrategyQuant是你开发交易策略非常得力的工具。  </p>
+<h1 id="StrategyQuant是如何做到的"><a href="#StrategyQuant是如何做到的" class="headerlink" title="StrategyQuant是如何做到的"></a>StrategyQuant是如何做到的</h1><p>&emsp;&emsp;StrategyQuant使用随机生成（Random generation）和遗传进化（Genetic evolution）两种方式来生成、测试策略。<br>&emsp;&emsp;StrategyQuant将信号（指标条件化，如：收盘价&gt;20天均价，CCI&gt;50等），指标，各种入场方式和出场方式视为构建策略的元素，然后自动生成策略，也就是交易模型，并根据设置在历史数据上测试。 </p>
+<p><img src="/2020/ck5wfrspx0002skukaxb954t3/entry.png" alt>  </p>
+<h2 id="入场类型、订单类型、Order-types"><a href="#入场类型、订单类型、Order-types" class="headerlink" title="入场类型、订单类型、Order types"></a>入场类型、订单类型、Order types</h2><ul>
+<li>市价单 </li>
+<li>市价/反转入场单 </li>
+<li>突破入场单</li>
+<li>限价单  </li>
 </ul>
-<p>&emsp;&emsp;常用到的是<strong>Data Manager，Builder，Retester和Custom Projects</strong>。<strong>Optimizer</strong>用来测试策略能否通过定期优化参数来提升绩效，Walk-forward Matrix测试比较耗时。<strong>AlgoWizard</strong>对于将主观经验策略代码化，目前只对于MT4、MT5有效，但用<strong>AlgoWizard</strong>来自定义策略模板风格非常值得研究。  </p>
-<h1 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h1><p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/builder1.png" alt>  </p>
-<p>&emsp;&emsp;左侧<strong>Stop  Pause  Start</strong>分别用于停止、暂停、开始策略的生成过程。在我们对策略生成进行必要的配置设置后，点击<strong>Start</strong>开始生成策略，<strong>Stop</strong>会完全停止生成过程，再次运行时相当于全新开始，而<strong>Pause</strong>是暂停策略的生成过程，再次<strong>Start</strong>后会接着从暂停前的状态继续工作。  </p>
-<p>&emsp;&emsp;我们一般不在<strong>Settings summary</strong>界面来进行策略生成前的设置，而是切换到<strong>Full Settings</strong> 来进行设置。<strong>Full Settings</strong> 里有策略生成设置所有设置项，包括<strong>What to build，Genetic options，Data，Trading Options，Building options，Money management，Cross checks，Ranking，Notes</strong>。  </p>
-<p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/fullsetting.png" alt>  </p>
-<h2 id="What-to-build"><a href="#What-to-build" class="headerlink" title="What to build"></a>What to build</h2><h3 id="Strategy-type-策略类型"><a href="#Strategy-type-策略类型" class="headerlink" title="Strategy type 策略类型"></a>Strategy type 策略类型</h3><p><strong>Strategy type</strong>里指定本次要生成什么类型的策略。  </p>
-<ul>
-<li>简单策略。默认选项，适合大多数情况  </li>
-<li>多周期或多品种策略。需要在Cross checks里设置策略中要参考的其他品种或周期的数据，目前还不支持TS、MC。 </li>
-<li>使用自定义策略模板。根据Algowizard自定义的策略模板来生成策略。</li>
-<li>Improve exsting strategy 可以将已有的策略导入，然后自动更改、增删策略中的信号条件、进出场设置等来研究策略有无进一步提升的空间。  </li>
+<h2 id="出场类型"><a href="#出场类型" class="headerlink" title="出场类型"></a>出场类型</h2><ul>
+<li>入场后多少根K线离场</li>
+<li>保本价离场</li>
+<li>目标价止损</li>
+<li>初始止损</li>
+<li>跟踪止损</li>
+<li>基于指标条件离场  </li>
 </ul>
-<h3 id="Additionnal-build-config-其他设置"><a href="#Additionnal-build-config-其他设置" class="headerlink" title="Additionnal build config 其他设置"></a>Additionnal build config 其他设置</h3><p><strong>Strategy stytle</strong>中可以设定三种策略风格：  </p>
+<p>&emsp;&emsp;随机生成是直接组合这些元素来随机组合策略，满足筛选条件的策略会自动保存到数据库中。而遗传进化的方式，先随机生成一批策略或者使用之前保存的策略作为初始库，然后使用遗传编程（Genetic Programming，GP）<br>根据评价目标（Fitness，如盈利/最大回撤，盈利因子或某些绩效的权重）来进化策略。  </p>
+<h1 id="StrategyQuant-X-的亮点"><a href="#StrategyQuant-X-的亮点" class="headerlink" title="StrategyQuant X 的亮点"></a>StrategyQuant X 的亮点</h1><p>&emsp;&emsp;目前Strategyquant最新版本为 X，并仍在滚动升级中。  </p>
 <ul>
-<li>SQX Signals Style  SQX标准风格</li>
-<li>SQX Signals Style with Fuzzy Logic  使用多指标打分的形式来定义市场多空条件</li>
-<li>Old SQ3 Style  3.8旧版本风格，不推荐使用  </li>
+<li><p>生成策略快，可以使用tick精度回测（目前仅支持MT4） </p>
+</li>
+<li><p>内置高精度历史数据</p>
+</li>
+<li><p>不需要编程知识</p>
+</li>
+<li><p>支持模糊逻辑（多指标打分）</p>
+</li>
+<li><p>内置AlgoWizard，可以自定义策略模板</p>
+</li>
+<li><p>支持多品种和多周期调用的策略</p>
+</li>
+<li><p>内置40多个技术指标，并允许自定义指标</p>
+</li>
+<li><p>可定制的自动化生成、测试流程</p>
+</li>
+<li><p>策略可直接用于Mt4、Mt5、Tradestation、Multicharts</p>
+</li>
+<li><p>多种健壮性方法，减少过拟合</p>
+<ul>
+<li>使用不同的设置再次测试</li>
+<li>多种样本内，样本外数据划分</li>
+<li>多种蒙特卡洛测试</li>
+<li>Walk-Forward分析</li>
+<li>Walk-Forward Matrix</li>
+<li>Opt.Profile / Sys.Param.Permutation</li>
 </ul>
-<p><img src="/2020/ck5ny5v4j00069kuk20rz0ew6/stoploss.png" alt><br>&emsp;&emsp;止损设置有三种方式：使用固定点数、使用ATR波动率、使用指标值。这里的固定点数是多少倍的最小一跳。如上海橡胶期货最小一跳为5元/吨，如果止损是100，则止损价为入场价不利偏离500时触发止损。  </p>
-<p>&emsp;&emsp;目标止盈设置与止损设置类似，只是最后多了一项风报比的设置，<strong>Limit Risk-Reward(SL vs PT) ratio</strong>。如果设置为50%，则表示如果盈利100个点止盈，则止损为200个点。对于趋势跟踪策略推荐设置100 到 500 %的搜寻范围。  </p>
-<p>&emsp;&emsp;止损原则上是要设置的，而目标止盈不一定要设置，尤其是趋势跟踪策略。</p>
+</li>
+<li><p>遗传进化可使用Islands</p>
+</li>
+</ul>
 
       
       <!-- 打赏 -->
@@ -146,10 +168,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://quantwin.com.cn/2020/ck5ny5v4j00069kuk20rz0ew6/" data-id="ck5ny5v4j00069kuk20rz0ew6"
+      <a data-url="http://quantwin.com.cn/2020/ck5wfrspx0002skukaxb954t3/" data-id="ck5wfrspx0002skukaxb954t3"
         class="article-share-link">分享</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StrategyQuant/" rel="tag">StrategyQuant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E6%96%87/" rel="tag">中文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%89%E5%8C%96/" rel="tag">汉化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%8C%E9%9D%A2/" rel="tag">界面</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%8F%9C%E5%8D%95/" rel="tag">菜单</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StrategyQuant/" rel="tag">StrategyQuant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%A4%E6%98%93%E6%A8%A1%E5%9E%8B/" rel="tag">交易模型</a></li></ul>
 
     </footer>
 
@@ -159,15 +181,20 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ck5ny5v4g00029kuk9pp1f0gx/" class="article-nav-link">
+      <a href="/2020/ck5wfrspr0000skuke6v8a7nk/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            StrategyQuant介绍
+            StrategyQuant下载与安装
           
         </div>
       </a>
     
+    
+      <a href="/2020/ck5wfrsq20007skuk4fz578dr/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">StrategyQuant界面菜单介绍</div>
+      </a>
     
   </nav>
 
