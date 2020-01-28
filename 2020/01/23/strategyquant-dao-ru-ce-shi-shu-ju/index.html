@@ -53,7 +53,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ck5wfrsq10006skuk6cyudmdg/" class="article-date">
+      <a href="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/" class="article-date">
   <time datetime="2020-01-23T06:09:28.000Z" itemprop="datePublished">2020-01-23</time>
 </a>
       
@@ -115,11 +115,11 @@
 </li>
 </ul>
 <p>本篇文章将介绍如果在Strategyquant里创建品种，设定品种有属性，并导入从Multicharts中导出的历史数据。  </p>
-<h1 id="设置品种"><a href="#设置品种" class="headerlink" title="设置品种"></a>设置品种</h1><p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/dataset.png" alt>  </p>
+<h1 id="设置品种"><a href="#设置品种" class="headerlink" title="设置品种"></a>设置品种</h1><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/dataset.png" alt>  </p>
 <p>首先切换到<strong>Data Manager 数据管理</strong>功能，按照上图所示，左键单击<strong>File import</strong>，然后选择<strong>Add sysmbol</strong>。  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/addsymbol.png" alt>  </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/addsymbol.png" alt>  </p>
 <p>上半部分是设定品种名称以及K线的时间是K线开始时间还是结束时间，MultiCharts里导出的数据的是K线结束的时间。下半部分是指定具体的品种属性，如果<strong>Instrument</strong>下拉选择框没有这个品种属性，需要<strong>Add new instruement</strong>来添加品种属性。一个品种属性，可以对应多个品种（名称），譬如我可以添加黄金主连合约价格、黄金指数合约价格、黄金主连价差调整连续合约或者黄金30分钟K线数据，都是对应黄金这个品种属性。  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/instru.png" alt>  </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/instru.png" alt>  </p>
 <ul>
 <li>Instrument 品种属性名称，名称随便起，不过建议用有意义、易区分的名称</li>
 <li>Description 品种描述，可以忽略不填</li>
@@ -149,17 +149,17 @@
 <li>日线级别策略，直接使用日线数据  </li>
 </ul>
 <h2 id="从Multicharts导出历史数据"><a href="#从Multicharts导出历史数据" class="headerlink" title="从Multicharts导出历史数据"></a>从Multicharts导出历史数据</h2><p>在Multihcarts里新建一个<strong>图表窗口</strong>，添加黄金期货，  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/au_a.png" alt><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/au_b.png" alt>  </p>
-<p>待历史数据全部载入完成，导入该数据,注意,不要选择<strong>同步导出指标数据</strong><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/export.png" alt><br><img src="/2020/ck5wfrsq10006skuk6cyudmdg/export2.png" alt>   </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/au_a.png" alt><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/au_b.png" alt>  </p>
+<p>待历史数据全部载入完成，导入该数据,注意,不要选择<strong>同步导出指标数据</strong><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/export.png" alt><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/export2.png" alt>   </p>
 <h2 id="StrategyQuant导入历史数据"><a href="#StrategyQuant导入历史数据" class="headerlink" title="StrategyQuant导入历史数据"></a>StrategyQuant导入历史数据</h2><p>在SQ中，接上一步，在Data品种列表里找到刚才添加的品种<strong>SHFE_AU</strong>并选中，然后点击上方的<strong>File import</strong> - <strong>Import file</strong>，  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/importa.png" alt>  </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/importa.png" alt>  </p>
 <p>然后弹出数据导入窗口,  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/importb.png" alt>  </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/importb.png" alt>  </p>
 <p>首先需要设置文件格式，对于MC导出的历史数据文件，首先要跳过第一行的名称，选择逗号分割，设定日期格式，并为数据每列指定是什么栏目，最后可以点击中间的<strong>Save</strong>来保存成预设的数据格式，方便以后数据格式的识别与导入。设置完成后<strong>Start Import</strong>开始导入，当下方品种列表靠右侧列显示Completed即表示导入完成。  </p>
-<h1 id="设置Sessions-交易小节"><a href="#设置Sessions-交易小节" class="headerlink" title="设置Sessions 交易小节"></a>设置Sessions 交易小节</h1><p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/sessioninmc.png" alt>  </p>
+<h1 id="设置Sessions-交易小节"><a href="#设置Sessions-交易小节" class="headerlink" title="设置Sessions 交易小节"></a>设置Sessions 交易小节</h1><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/sessioninmc.png" alt>  </p>
 <p>Sessions设置主要作用是标识交易时段的开始与结束，以及当天交易最后结束结算的时间。如果你在SQ中使用1分钟数据来合成大周期级别的数据，这个交易小节设置非常重要。  </p>
 <p>首先，在Multicharts中打开报<strong>报价管理器</strong>，找到相应的期货市场与品种，然后在品种合约（该品种任意合约）双击，最后切换到<strong>交易时段</strong>标签页，看到MC中的Sessions设置。根据这里的设置，在SQ中增加Sessions设置。  </p>
-<p><img src="/2020/ck5wfrsq10006skuk6cyudmdg/sessioninsq.png" alt>  </p>
+<p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/sessioninsq.png" alt>  </p>
 <p>在SQ中，依次找到<strong>Data manager</strong>，<strong>Session</strong>，<strong>Add session</strong>，找开添加小节设置模板<strong>Add session template</strong>。<strong>Session name</strong>随便写，只要合成数据或者策略生成回测中的<strong>Trading options</strong>正确指定品种对应的小节设置即可。我们这里取名为AU_AG，因为黄金、白银具有完全相同的交易时间，这个Sessions设置可以供这两个品种使用。<br>目前SQ这里的设置并不是很友好，或许开发者并不了解国内市场设置的繁琐程度。我们需要对<strong>每一天的每个时段</strong>单独ADD添加。注意这里的小节划分或许与交易所实际的规定并不完全一致，因为这里的原则，是将SQ中的设置与你所运行策略的交易平台，如Multicharts中设置的小节划分保持一致。  </p>
 <p><strong>注意每天的13:00-15:00时间段，最每个交易日结算前的最后一个交易时段，所以SEOC设置为YES</strong>。  </p>
 <p>最后，我们可以使用Data manager中的Export导出功能，导出某个大周期，譬如30分钟周期数据，然后与MC中导出的30分钟周期数据进行对比。</p>
@@ -173,8 +173,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://quantwin.com.cn/2020/ck5wfrsq10006skuk6cyudmdg/" data-id="ck5wfrsq10006skuk6cyudmdg"
-        class="article-share-link">分享</a>
+      <a data-url="http://quantwin.com.cn/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/" data-id="ck5x81ta90008g8uk2j8q5cmz"
+        class="article-share-link"></a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MultiCharts/" rel="tag">MultiCharts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sesstion/" rel="tag">Sesstion</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StrategyQuant/" rel="tag">StrategyQuant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE/" rel="tag">数据</a></li></ul>
 
@@ -187,7 +187,7 @@
   <nav class="article-nav">
     
     
-      <a href="/2020/ck5wfrsq5000bskuk3kxg0bjl/" class="article-nav-link">
+      <a href="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-3/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">StrategyQuant界面菜单介绍3</div>
       </a>
@@ -303,6 +303,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
     </li>
     
   </ul>

@@ -53,7 +53,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/ck5wfrsq30008skuk5ut24muw/" class="article-date">
+      <a href="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/" class="article-date">
   <time datetime="2020-01-20T06:55:34.000Z" itemprop="datePublished">2020-01-20</time>
 </a>
       
@@ -124,12 +124,12 @@
 <p>也是 GP或GA中的基本设置之一。在策略生成过程中，突变概率控制策略内部的构建块更换的概率。数值越大，越容易获得多样化的策略。交叉概率 和 变异概率的设置范围没有标准的范围参考,但可以简单理解，交叉概率越大，策略相似性越大，突变概率越大越容易生成多样化的策略。  </p>
 <h2 id="Islands-options"><a href="#Islands-options" class="headerlink" title="Islands options"></a>Islands options</h2><p>岛的概念进一步模拟了现实世界的进化过程。每个岛一开始是独立的种群，然后通过<strong>Islands</strong>岛的数量、每进化多少代移民（岛之间交换策略）<strong>Migrate every Xth generation</strong> 和 移民比例 <strong>Population migration rate</strong> 三个选项来控制岛对总体种群进化的影响。  </p>
 <p><strong>Islands</strong>的数量建议设置范围1-10。<br><strong>Migrate every Xth generation</strong>的建议设置范围为左右<strong>Max # of Generations</strong>的1/4到2/3，但不要设置太小。推荐值为10。<br><strong>Population migration rate</strong> 建议值为1-5个策略，如果左侧种群数量为100，则这个移民率设置为1%-5%。  </p>
-<h2 id="Initial-population-generation"><a href="#Initial-population-generation" class="headerlink" title="Initial population generation"></a>Initial population generation</h2><p><img src="/2020/ck5wfrsq30008skuk5ut24muw/initialpopulation.png" alt>  </p>
+<h2 id="Initial-population-generation"><a href="#Initial-population-generation" class="headerlink" title="Initial population generation"></a>Initial population generation</h2><p><img src="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/initialpopulation.png" alt>  </p>
 <p><strong>Use strategies from Initial population databank as evolution start</strong> 使用已有策略来作为初始策略库来开始进化，如果导入的策略数量达到要求的种群大小，StrategyQuant会进一步随机生成策略，直到达到设置所要求的数量。 </p>
 <p>当打开该选项时，下方数据库里会多出一个叫<strong>Initial population</strong>的数据库，点击它下方的Load按扭来导入已有的Strategyquant策略。  </p>
 <p><strong>Generated decimation coefficient</strong> 抽取系数。其实这里叫做生成倍数似乎更容易理解。举例说明，假设前面通过设置种群大小和岛数，使初始策略种群为400个策略，如果设置抽取系数为3，则表示一开始要生成1200个通过了右侧过滤条件的策略，然后从中选出排名前400个策略来作为初始种群。通过这项设置可以进一步提升初始策略的质量，但会需要电脑更多的计算时间。你要关注总体的初始策略数量（如本例中的1200），根据电脑性能合理设置以上有关选项。  </p>
 <h2 id="Filter-generated-initial-population"><a href="#Filter-generated-initial-population" class="headerlink" title="Filter generated initial population"></a>Filter generated initial population</h2><p>用于过滤、筛选初始策略。注意这里不要使用过于严格绩效评价限制。推荐只使用#trades &gt; 0 或 net profit &gt; 0 等条件。  </p>
-<h2 id="“Fresh-blood”"><a href="#“Fresh-blood”" class="headerlink" title="“Fresh blood”"></a>“Fresh blood”</h2><p><img src="/2020/ck5wfrsq30008skuk5ut24muw/fresh.png" alt>  </p>
+<h2 id="“Fresh-blood”"><a href="#“Fresh-blood”" class="headerlink" title="“Fresh blood”"></a>“Fresh blood”</h2><p><img src="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/fresh.png" alt>  </p>
 <h2 id="Evolution-management"><a href="#Evolution-management" class="headerlink" title="Evolution management"></a>Evolution management</h2><p>最后这两项设置里评价策略好坏，是基于后面<strong>Ranking</strong>里的设置，图例为建议打开的选项。具体数值可以根据前面设置来调整这里的具体数值或范围。  </p>
 
       
@@ -141,8 +141,8 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://quantwin.com.cn/2020/ck5wfrsq30008skuk5ut24muw/" data-id="ck5wfrsq30008skuk5ut24muw"
-        class="article-share-link">分享</a>
+      <a data-url="http://quantwin.com.cn/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/" data-id="ck5x81taa0009g8ukes2hfyh0"
+        class="article-share-link"></a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StrategyQuant/" rel="tag">StrategyQuant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E6%96%87/" rel="tag">中文</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B1%89%E5%8C%96/" rel="tag">汉化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%95%8C%E9%9D%A2/" rel="tag">界面</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%8F%9C%E5%8D%95/" rel="tag">菜单</a></li></ul>
 
@@ -154,7 +154,7 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/ck5wfrsq5000bskuk3kxg0bjl/" class="article-nav-link">
+      <a href="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-3/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
@@ -164,7 +164,7 @@
       </a>
     
     
-      <a href="/2020/ck5wfrspr0000skuke6v8a7nk/" class="article-nav-link">
+      <a href="/2020/01/19/strategyquant-xia-zai-yu-an-zhuang/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">StrategyQuant下载与安装</div>
       </a>
@@ -280,6 +280,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
     </li>
     
   </ul>
