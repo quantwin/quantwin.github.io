@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>提高Strategyquant创建期货交易策略的可靠性</title>
+    <url>/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/</url>
+    <content><![CDATA[<p>对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：  </p>
+<ul>
+<li>模型经过一定的历史数据检验，所以决策比靠主观感觉稍“科学”一点</li>
+<li>可以监测多品种、多周期上的交易机会，24小时交易，不担心错过行情</li>
+<li>人生苦短！将自己从市场行情中解放出来，做一些更有意义的事或享受生活   </li>
+</ul>
+<a id="more"></a>  
+<p>但程序化交易也有一些弱点，我们必须要承认：  </p>
+<ul>
+<li>过去不代表未来。</li>
+<li>回测绩效受到数据精度等因素影响，未必完全符合实际情况。  </li>
+</ul>
+<p>评估策略质量最重要的方面是看其健壮性如何。我们不仅要让策略与历史数据中的交易机会拟合，更重要的是在价格数据，指标参数发生一些变化，或者错过一些交易时，策略仍然具有盈利能力。<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a> 中采用了许多工具，如多样化的样本外设置、蒙特卡罗测试等来检验策略的健壮性。  </p>
+<p>本文所讨论内容假设的背景是，你正使用Tradestation或Multihcarts来进行程序化交易。</p>
+<h1 id="如何确保策略在TS-MC与在SQ中的表现一致"><a href="#如何确保策略在TS-MC与在SQ中的表现一致" class="headerlink" title="如何确保策略在TS/MC与在SQ中的表现一致"></a>如何确保策略在TS/MC与在SQ中的表现一致</h1><p><strong>1，导入最新的自定义指标</strong>  </p>
+<p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import.png" alt>  </p>
+<p>SQ为了保证在对应的交易软件中指标计算结果一致，使用了大量的自定义指标。在将策略复制到MC/TS中测试之前，我们需要首先导入自定义指标。自定义指标位于SQ解压<strong>安装目录的\custom_indicators\Tradestation\</strong>下。我们以MC为例，在MC中，打开公式编辑器，然后<strong>文件</strong>,<strong>导入</strong>，找到SQ_MC.pla文件，然后<strong>打开</strong>，<strong>确认</strong>导入。  </p>
+<p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import2.png" alt>  </p>
+<p><strong>2，确保SQ中测试的价格历史数据与TS/MC中的数据一致</strong>  </p>
+<p>有两种办法可以解决这个问题，</p>
+<ul>
+<li>从MC/TS导出要生成策略的K线周期数据，直接给SQ测试使用。这样两个软件中测试的数据完全一致。</li>
+<li>从MC/TS中导出1分钟数据，并根据MC/TS中品种的<strong>交易时段</strong>设置在SQ中正确设置<strong>session</strong>，SQ根据session来转换不同的大周期数据来使用。这样处理后，大部分的分钟周期数据会正确转换。但由于国内期货一些品种有夜盘连续交易，实际结算跨自然日，对于某些大周期的数据，譬如4小时，或者日线的合成转数据可能不准确。  </li>
+</ul>
+<p><strong>3，创建品种时，数据类型（K线时间为K线收盘时间）选择要准确。</strong> </p>
+<p><img src="https://strategyquant.com/wp-content/uploads/2019/04/bartype_ts.jpg" alt>  </p>
+<p><strong>4，确保选择对应的回测引擎</strong></p>
+<p><strong>5，trading options注意事项</strong><br>如果在交易选项里使用了 <strong>Exit At End Of Day</strong> 当天收盘平仓 或<strong>Exit On Friday</strong> 周五收盘平仓，建议将其平仓时间设置为<strong>00:00</strong>，这样SQ会在当天或周五的最后一个交易小节结束时平仓。如果你要指定具体的平仓时间，<strong>确保设定的时间在当天收盘前之前</strong>。  </p>
+<p><strong>6, 尝试删除SQ缓存文件</strong><br>如果SQ中策略表现与在MC/TS中表现不一致，在确认以上设置无问题后，有可能是SQ使用的缓存数据较旧有关系。可以尝试，先关闭SQ软件，删除 /internal/testfiles文件夹，然后再重新打开SQ。  </p>
+<p><strong>7，其他须知</strong></p>
+<ul>
+<li>多品种或多周期（如MC中Subcharts调用其他品种或其他周期)还不支持MC/TS</li>
+<li>测试精度目前只能使用当前周期Selected Timeframe</li>
+<li>某些指标可能导致回测结算不一致,如Pivots,Fibo</li>
+</ul>
+<p>参考资料:<a href="https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/" target="_blank" rel="noopener">https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/</a>  </p>
+]]></content>
+      <categories>
+        <category>StrategyQuant</category>
+        <category>MultiCharts</category>
+      </categories>
+      <tags>
+        <tag>StrategyQuant</tag>
+        <tag>MultiCharts</tag>
+        <tag>数据</tag>
+        <tag>Session</tag>
+        <tag>Tradestation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>StrategyQuant导入测试数据</title>
     <url>/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/</url>
     <content><![CDATA[<p><strong>StrategyQuant</strong>创建交易策略的大体流程分为:  </p>
@@ -70,7 +122,7 @@
         <tag>StrategyQuant</tag>
         <tag>MultiCharts</tag>
         <tag>数据</tag>
-        <tag>Sesstion</tag>
+        <tag>Session</tag>
       </tags>
   </entry>
   <entry>
@@ -149,11 +201,11 @@
       </categories>
       <tags>
         <tag>StrategyQuant</tag>
+        <tag>数据</tag>
         <tag>界面</tag>
         <tag>菜单</tag>
         <tag>中文</tag>
         <tag>汉化</tag>
-        <tag>数据</tag>
         <tag>样本内</tag>
         <tag>样本外</tag>
       </tags>

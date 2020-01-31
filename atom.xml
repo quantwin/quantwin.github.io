@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://quantwin.com.cn/"/>
-  <updated>2020-01-27T12:28:49.592Z</updated>
+  <updated>2020-01-31T12:03:39.056Z</updated>
   <id>http://quantwin.com.cn/</id>
   
   <author>
@@ -17,11 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>提高Strategyquant创建期货交易策略的可靠性</title>
+    <link href="http://quantwin.com.cn/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/"/>
+    <id>http://quantwin.com.cn/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/</id>
+    <published>2020-01-28T14:35:24.000Z</published>
+    <updated>2020-01-31T12:03:39.056Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：  </p><ul><li>模型经过一定的历史数据检验，所以决策比靠主观感觉稍“科学”一点</li><li>可以监测多品种、多周期上的交易机会，24小时交易，不担心错过行情</li><li>人生苦短！将自己从市场行情中解放出来，做一些更有意义的事或享受生活   </li></ul><a id="more"></a>  <p>但程序化交易也有一些弱点，我们必须要承认：  </p><ul><li>过去不代表未来。</li><li>回测绩效受到数据精度等因素影响，未必完全符合实际情况。  </li></ul><p>评估策略质量最重要的方面是看其健壮性如何。我们不仅要让策略与历史数据中的交易机会拟合，更重要的是在价格数据，指标参数发生一些变化，或者错过一些交易时，策略仍然具有盈利能力。<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a> 中采用了许多工具，如多样化的样本外设置、蒙特卡罗测试等来检验策略的健壮性。  </p><p>本文所讨论内容假设的背景是，你正使用Tradestation或Multihcarts来进行程序化交易。</p><h1 id="如何确保策略在TS-MC与在SQ中的表现一致"><a href="#如何确保策略在TS-MC与在SQ中的表现一致" class="headerlink" title="如何确保策略在TS/MC与在SQ中的表现一致"></a>如何确保策略在TS/MC与在SQ中的表现一致</h1><p><strong>1，导入最新的自定义指标</strong>  </p><p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import.png" alt>  </p><p>SQ为了保证在对应的交易软件中指标计算结果一致，使用了大量的自定义指标。在将策略复制到MC/TS中测试之前，我们需要首先导入自定义指标。自定义指标位于SQ解压<strong>安装目录的\custom_indicators\Tradestation\</strong>下。我们以MC为例，在MC中，打开公式编辑器，然后<strong>文件</strong>,<strong>导入</strong>，找到SQ_MC.pla文件，然后<strong>打开</strong>，<strong>确认</strong>导入。  </p><p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import2.png" alt>  </p><p><strong>2，确保SQ中测试的价格历史数据与TS/MC中的数据一致</strong>  </p><p>有两种办法可以解决这个问题，</p><ul><li>从MC/TS导出要生成策略的K线周期数据，直接给SQ测试使用。这样两个软件中测试的数据完全一致。</li><li>从MC/TS中导出1分钟数据，并根据MC/TS中品种的<strong>交易时段</strong>设置在SQ中正确设置<strong>session</strong>，SQ根据session来转换不同的大周期数据来使用。这样处理后，大部分的分钟周期数据会正确转换。但由于国内期货一些品种有夜盘连续交易，实际结算跨自然日，对于某些大周期的数据，譬如4小时，或者日线的合成转数据可能不准确。  </li></ul><p><strong>3，创建品种时，数据类型（K线时间为K线收盘时间）选择要准确。</strong> </p><p><img src="https://strategyquant.com/wp-content/uploads/2019/04/bartype_ts.jpg" alt>  </p><p><strong>4，确保选择对应的回测引擎</strong></p><p><strong>5，trading options注意事项</strong><br>如果在交易选项里使用了 <strong>Exit At End Of Day</strong> 当天收盘平仓 或<strong>Exit On Friday</strong> 周五收盘平仓，建议将其平仓时间设置为<strong>00:00</strong>，这样SQ会在当天或周五的最后一个交易小节结束时平仓。如果你要指定具体的平仓时间，<strong>确保设定的时间在当天收盘前之前</strong>。  </p><p><strong>6, 尝试删除SQ缓存文件</strong><br>如果SQ中策略表现与在MC/TS中表现不一致，在确认以上设置无问题后，有可能是SQ使用的缓存数据较旧有关系。可以尝试，先关闭SQ软件，删除 /internal/testfiles文件夹，然后再重新打开SQ。  </p><p><strong>7，其他须知</strong></p><ul><li>多品种或多周期（如MC中Subcharts调用其他品种或其他周期)还不支持MC/TS</li><li>测试精度目前只能使用当前周期Selected Timeframe</li><li>某些指标可能导致回测结算不一致,如Pivots,Fibo</li></ul><p>参考资料:<a href="https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/" target="_blank" rel="noopener">https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/</a>  </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;模型经过一定的历史数据检验，所以决策比靠主观感觉稍“科学”一点&lt;/li&gt;
+&lt;li&gt;可以监测多品种、多周期上的交易机会，24小时交易，不担心错过行情&lt;/li&gt;
+&lt;li&gt;人生苦短！将自己从市场行情中解放出来，做一些更有意义的事或享受生活   &lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="StrategyQuant" scheme="http://quantwin.com.cn/categories/StrategyQuant/"/>
+    
+      <category term="MultiCharts" scheme="http://quantwin.com.cn/categories/StrategyQuant/MultiCharts/"/>
+    
+    
+      <category term="StrategyQuant" scheme="http://quantwin.com.cn/tags/StrategyQuant/"/>
+    
+      <category term="MultiCharts" scheme="http://quantwin.com.cn/tags/MultiCharts/"/>
+    
+      <category term="数据" scheme="http://quantwin.com.cn/tags/%E6%95%B0%E6%8D%AE/"/>
+    
+      <category term="Session" scheme="http://quantwin.com.cn/tags/Session/"/>
+    
+      <category term="Tradestation" scheme="http://quantwin.com.cn/tags/Tradestation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>StrategyQuant导入测试数据</title>
     <link href="http://quantwin.com.cn/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/"/>
     <id>http://quantwin.com.cn/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/</id>
     <published>2020-01-23T06:09:28.000Z</published>
-    <updated>2020-01-27T12:28:49.592Z</updated>
+    <updated>2020-01-28T12:08:04.988Z</updated>
     
     <content type="html"><![CDATA[<p><strong>StrategyQuant</strong>创建交易策略的大体流程分为:  </p><ul><li>导入历史价格数据，新交易品种需要先设定品种属性</li><li>设置Builde有关选项，运行开始生成策略</li><li>对策略进行健壮测试</li><li>将策略复制到相应程序化交易平台测试运行<a id="more"></a>  </li></ul><p>本篇文章将介绍如果在Strategyquant里创建品种，设定品种有属性，并导入从Multicharts中导出的历史数据。  </p><h1 id="设置品种"><a href="#设置品种" class="headerlink" title="设置品种"></a>设置品种</h1><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/dataset.png" alt>  </p><p>首先切换到<strong>Data Manager 数据管理</strong>功能，按照上图所示，左键单击<strong>File import</strong>，然后选择<strong>Add sysmbol</strong>。  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/addsymbol.png" alt>  </p><p>上半部分是设定品种名称以及K线的时间是K线开始时间还是结束时间，MultiCharts里导出的数据的是K线结束的时间。下半部分是指定具体的品种属性，如果<strong>Instrument</strong>下拉选择框没有这个品种属性，需要<strong>Add new instruement</strong>来添加品种属性。一个品种属性，可以对应多个品种（名称），譬如我可以添加黄金主连合约价格、黄金指数合约价格、黄金主连价差调整连续合约或者黄金30分钟K线数据，都是对应黄金这个品种属性。  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/instru.png" alt>  </p><ul><li>Instrument 品种属性名称，名称随便起，不过建议用有意义、易区分的名称</li><li>Description 品种描述，可以忽略不填</li><li>Data type 数据类型，主要是区分是外汇，还是期货或股票等</li><li>Point value 点价值，即一标准手的合约价值。以期货为例，与交易单位和报价单位相关。黄金期货交易单位是1000克/手，报价单位是元/克，所以point value 是 1000；鸡蛋交易单位是5吨/手，而报价单位是元/0.5吨，所以point value是10；股指期货IF的合约乘数为每点300元，即point value为300。</li><li>pip/tick size 用于结算的最小一跳，对期货而言即最小一跳，如黄金期货为0.02元/克。外汇是小数点4位那个时代的报价精度。</li><li>pip/tick step 报价的最小一跳，对期货而言与pip/tick size是一样的。外汇已经普遍是5位小数报价了。</li><li>Default spread 价差成本，主要针对外汇而言，是交易成本。期货品种忽略此项。  </li></ul><p>手续费设置，是双边合计计算的。国内期货的征收方式主要是合约价值百分比和每手固定金额两种方式。 </p><ul><li>No  不设置手续费</li><li>per Trade  每笔交易固定金额</li><li>Percentage based   合约价值百分比</li><li>Size based   每手固定金额  </li></ul><p>设置完毕后，点击Save保存，返回到<strong>Edit symbol</strong>品种设置界面，点击Save保存。  </p><h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p>如果我想导入黄金主连合约数据和黄金指数合约数据，只有增添加两个品种然后都指定是黄金期货属性，因为这两个价格序列是完全不同的价格序列。而如果我想用到30分钟K线的黄金主连数据，也可能会用到60分钟K线黄金主连数据，就有两种方式。  </p><ul><li>新建两个品种，如AU_30MIn，AU_60min</li><li>或导入1分钟数据，然后让SQ合成30分钟和60分钟数据  </li></ul><p>第一种方式的好处是与原平台数据完全一致，弊端是可能需要一个品种做多次导入；第二种方式好处一次导入可以供不同周期调用，包括非常见的分钟周期，如20分钟，45分钟，2小时之类 ；另外可以使用1分钟精细数据回测，绩效评价更准确（目前只支持MT4，MT5）。但要求必须设置好交易小节Sessions，否则会导致大周期数据合成错误，另外目前国内期货夜盘品种，用1分钟周期数据合成日线数据都不准确。因为老外根本不能想象国内市场的这种结算日的划分方式。  </p><p>个人建议：  </p><ul><li>分钟级别策略，如30分钟，60分钟，建议使用1分钟数据</li><li>日线级别策略，直接使用日线数据  </li></ul><h2 id="从Multicharts导出历史数据"><a href="#从Multicharts导出历史数据" class="headerlink" title="从Multicharts导出历史数据"></a>从Multicharts导出历史数据</h2><p>在Multihcarts里新建一个<strong>图表窗口</strong>，添加黄金期货，  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/au_a.png" alt><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/au_b.png" alt>  </p><p>待历史数据全部载入完成，导入该数据,注意,不要选择<strong>同步导出指标数据</strong><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/export.png" alt><br><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/export2.png" alt>   </p><h2 id="StrategyQuant导入历史数据"><a href="#StrategyQuant导入历史数据" class="headerlink" title="StrategyQuant导入历史数据"></a>StrategyQuant导入历史数据</h2><p>在SQ中，接上一步，在Data品种列表里找到刚才添加的品种<strong>SHFE_AU</strong>并选中，然后点击上方的<strong>File import</strong> - <strong>Import file</strong>，  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/importa.png" alt>  </p><p>然后弹出数据导入窗口,  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/importb.png" alt>  </p><p>首先需要设置文件格式，对于MC导出的历史数据文件，首先要跳过第一行的名称，选择逗号分割，设定日期格式，并为数据每列指定是什么栏目，最后可以点击中间的<strong>Save</strong>来保存成预设的数据格式，方便以后数据格式的识别与导入。设置完成后<strong>Start Import</strong>开始导入，当下方品种列表靠右侧列显示Completed即表示导入完成。  </p><h1 id="设置Sessions-交易小节"><a href="#设置Sessions-交易小节" class="headerlink" title="设置Sessions 交易小节"></a>设置Sessions 交易小节</h1><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/sessioninmc.png" alt>  </p><p>Sessions设置主要作用是标识交易时段的开始与结束，以及当天交易最后结束结算的时间。如果你在SQ中使用1分钟数据来合成大周期级别的数据，这个交易小节设置非常重要。  </p><p>首先，在Multicharts中打开报<strong>报价管理器</strong>，找到相应的期货市场与品种，然后在品种合约（该品种任意合约）双击，最后切换到<strong>交易时段</strong>标签页，看到MC中的Sessions设置。根据这里的设置，在SQ中增加Sessions设置。  </p><p><img src="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/sessioninsq.png" alt>  </p><p>在SQ中，依次找到<strong>Data manager</strong>，<strong>Session</strong>，<strong>Add session</strong>，找开添加小节设置模板<strong>Add session template</strong>。<strong>Session name</strong>随便写，只要合成数据或者策略生成回测中的<strong>Trading options</strong>正确指定品种对应的小节设置即可。我们这里取名为AU_AG，因为黄金、白银具有完全相同的交易时间，这个Sessions设置可以供这两个品种使用。<br>目前SQ这里的设置并不是很友好，或许开发者并不了解国内市场设置的繁琐程度。我们需要对<strong>每一天的每个时段</strong>单独ADD添加。注意这里的小节划分或许与交易所实际的规定并不完全一致，因为这里的原则，是将SQ中的设置与你所运行策略的交易平台，如Multicharts中设置的小节划分保持一致。  </p><p><strong>注意每天的13:00-15:00时间段，最每个交易日结算前的最后一个交易时段，所以SEOC设置为YES</strong>。  </p><p>最后，我们可以使用Data manager中的Export导出功能，导出某个大周期，譬如30分钟周期数据，然后与MC中导出的30分钟周期数据进行对比。</p>]]></content>
     
@@ -46,7 +84,7 @@
     
       <category term="数据" scheme="http://quantwin.com.cn/tags/%E6%95%B0%E6%8D%AE/"/>
     
-      <category term="Sesstion" scheme="http://quantwin.com.cn/tags/Sesstion/"/>
+      <category term="Session" scheme="http://quantwin.com.cn/tags/Session/"/>
     
   </entry>
   
@@ -72,6 +110,8 @@
     
       <category term="StrategyQuant" scheme="http://quantwin.com.cn/tags/StrategyQuant/"/>
     
+      <category term="数据" scheme="http://quantwin.com.cn/tags/%E6%95%B0%E6%8D%AE/"/>
+    
       <category term="界面" scheme="http://quantwin.com.cn/tags/%E7%95%8C%E9%9D%A2/"/>
     
       <category term="菜单" scheme="http://quantwin.com.cn/tags/%E8%8F%9C%E5%8D%95/"/>
@@ -79,8 +119,6 @@
       <category term="中文" scheme="http://quantwin.com.cn/tags/%E4%B8%AD%E6%96%87/"/>
     
       <category term="汉化" scheme="http://quantwin.com.cn/tags/%E6%B1%89%E5%8C%96/"/>
-    
-      <category term="数据" scheme="http://quantwin.com.cn/tags/%E6%95%B0%E6%8D%AE/"/>
     
       <category term="样本内" scheme="http://quantwin.com.cn/tags/%E6%A0%B7%E6%9C%AC%E5%86%85/"/>
     
