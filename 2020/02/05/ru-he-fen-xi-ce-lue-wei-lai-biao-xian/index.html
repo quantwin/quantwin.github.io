@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="提高Strategyquant创建期货交易策略的可靠性, Strategyquant,策略,模型,EA,程序化">
-    <meta name="description" content="对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：">
+    <meta name="keywords" content="如何分析策略未来表现, Strategyquant,策略,模型,EA,程序化">
+    <meta name="description" content="在使用程序化交易时，我们肯定会遇到这样的困惑：  
+
+这个策略通过了历史回测，可是它在未来的市场行情变动中，表现是否会很好？
+某个策略运行一段时间后，产生一些交易，其中有盈有亏，这个策略是否还要继续运行下去？  
+
+我们这次先主要讨论第一个">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>提高Strategyquant创建期货交易策略的可靠性 | QuantWin</title>
+    <title>如何分析策略未来表现 | QuantWin</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/easyicon_net_32.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -224,7 +229,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">提高Strategyquant创建期货交易策略的可靠性</h1>
+                    <h1 class="description center-align post-title">如何分析策略未来表现</h1>
                 </div>
             </div>
         </div>
@@ -341,24 +346,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/StrategyQuant/">
-                                <span class="chip bg-color">StrategyQuant</span>
-                            </a>
-                        
                             <a href="/tags/MultiCharts/">
                                 <span class="chip bg-color">MultiCharts</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE/">
-                                <span class="chip bg-color">数据</span>
+                            <a href="/tags/QuantAnalyzer/">
+                                <span class="chip bg-color">QuantAnalyzer</span>
                             </a>
                         
-                            <a href="/tags/Session/">
-                                <span class="chip bg-color">Session</span>
-                            </a>
-                        
-                            <a href="/tags/Tradestation/">
-                                <span class="chip bg-color">Tradestation</span>
+                            <a href="/tags/%E7%AD%96%E7%95%A5/">
+                                <span class="chip bg-color">策略</span>
                             </a>
                         
                     </div>
@@ -369,12 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/StrategyQuant/" class="post-category">
-                                StrategyQuant
-                            </a>
-                        
-                            <a href="/categories/StrategyQuant/MultiCharts/" class="post-category">
-                                MultiCharts
+                            <a href="/categories/QuantAnalyzer/" class="post-category">
+                                QuantAnalyzer
                             </a>
                         
                     </div>
@@ -386,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-28
+                    2020-02-05
                 </div>
                 
 
@@ -403,42 +396,28 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：  </p>
+                <p>在使用程序化交易时，我们肯定会遇到这样的困惑：  </p>
 <ul>
-<li>模型经过一定的历史数据检验，所以决策比靠主观感觉稍“科学”一点</li>
-<li>可以监测多品种、多周期上的交易机会，24小时交易，不担心错过行情</li>
-<li>人生苦短！将自己从市场行情中解放出来，做一些更有意义的事或享受生活   </li>
+<li>这个策略通过了历史回测，可是它在未来的市场行情变动中，表现是否会很好？</li>
+<li>某个策略运行一段时间后，产生一些交易，其中有盈有亏，这个策略是否还要继续运行下去？  </li>
 </ul>
-<a id="more"></a>  
-<p>但程序化交易也有一些弱点，我们必须要承认：  </p>
+<p>我们这次先主要讨论第一个问题。  </p>
+<p>这里需要用到一个工具， <a href="https://strategyquant.sjv.io/c/1353913/616767/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>QuantAnalyzer</a> 。这是StrategyQuant公司开发一款可以免费使用的策略分析工具。它可以分析交易策略回测的绩效报告，或者对比策略在SQ与在交易平台或实盘的差异，来评估策略表现以及有无优化的空间。它支持以下诸多平台,  </p>
+<p><img src="http://strategyquant.com/wp-content/uploads/2018/03/support.png" alt>  </p>
+<a href="https://strategyquant.sjv.io/c/1353913/616767/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>点这里下载QuantAnalyzer</a> ，注意是点击右侧的Download，然后下载。  
+
+<p><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/dw.png" alt></p>
+<a href="https://pan.baidu.com/mall/product/detail/album?pid=2308402367340478465" target="_blank" rel="noopener" title="[external] [超链接]" target>操作演示视频</a> ,请在电脑上用谷歌浏览器或Edge浏览器打开。
+
+<p>QuantAnalyzer有以下主要功能。  </p>
 <ul>
-<li>过去不代表未来。</li>
-<li>回测绩效受到数据精度等因素影响，未必完全符合实际情况。  </li>
+<li>交易结果分析。这一点与Strategyquant中的策略绩效分析基本类似。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/tradelist.png" alt>  </li>
+<li>权益曲线控制。这是一个很意思的测试，其目的是根据过去一段时间的策略表现，来调整策略后面的动作（如停止交易，调减交易手数等）。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/equity.png" alt>  </li>
+<li>蒙特卡洛模拟。这个与Strategyquant中对交易结果进行最简单蒙特卡洛模拟操作类似，不过多了一个对未来的策略表现的统计预测，可以参考。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/forecast.png" alt></li>
+<li>假设场景。譬如某天或某天某个时间不交易，绩效会如何。（本人没太使用这个功能，或许你有好的理解和应用）</li>
+<li>组合管理。可以根据策略绩效表现(不限品种，周期），来自动构建策略组合。可以参考。</li>
+<li>资金管理。与Strategyquant的资金管理类似，其实是仓位管理。主要是海龟式的仓位管理。意义不大。  </li>
 </ul>
-<p>评估策略质量最重要的方面是看其健壮性如何。我们不仅要让策略与历史数据中的交易机会拟合，更重要的是在价格数据，指标参数发生一些变化，或者错过一些交易时，策略仍然具有盈利能力。<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>StrategyQuant</a> 中采用了许多工具，如多样化的样本外设置、蒙特卡罗测试等来检验策略的健壮性。  </p>
-<p>本文所讨论内容假设的背景是，你正使用Tradestation或Multihcarts来进行程序化交易。</p>
-<h1 id="如何确保策略在TS-MC与在SQ中的表现一致"><a href="#如何确保策略在TS-MC与在SQ中的表现一致" class="headerlink" title="如何确保策略在TS/MC与在SQ中的表现一致"></a>如何确保策略在TS/MC与在SQ中的表现一致</h1><p><strong>1，导入最新的自定义指标</strong>  </p>
-<p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import.png" alt>  </p>
-<p>SQ为了保证在对应的交易软件中指标计算结果一致，使用了大量的自定义指标。在将策略复制到MC/TS中测试之前，我们需要首先导入自定义指标。自定义指标位于SQ解压<strong>安装目录的\custom_indicators\Tradestation\</strong>下。我们以MC为例，在MC中，打开公式编辑器，然后<strong>文件</strong>,<strong>导入</strong>，找到SQ_MC.pla文件，然后<strong>打开</strong>，<strong>确认</strong>导入。  </p>
-<p><img src="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/import2.png" alt>  </p>
-<p><strong>2，确保SQ中测试的价格历史数据与TS/MC中的数据一致</strong>  </p>
-<p>有两种办法可以解决这个问题，</p>
-<ul>
-<li>从MC/TS导出要生成策略的K线周期数据，直接给SQ测试使用。这样两个软件中测试的数据完全一致。</li>
-<li>从MC/TS中导出1分钟数据，并根据MC/TS中品种的<strong>交易时段</strong>设置在SQ中正确设置<strong>session</strong>，SQ根据session来转换不同的大周期数据来使用。这样处理后，大部分的分钟周期数据会正确转换。但由于国内期货一些品种有夜盘连续交易，实际结算跨自然日，对于某些大周期的数据，譬如4小时，或者日线的合成转数据可能不准确。  </li>
-</ul>
-<p><strong>3，创建品种时，数据类型（K线时间为K线收盘时间）选择要准确。</strong> </p>
-<p><img src="https://strategyquant.com/wp-content/uploads/2019/04/bartype_ts.jpg" alt>  </p>
-<p><strong>4，确保选择对应的回测引擎</strong></p>
-<p><strong>5，trading options注意事项</strong><br>如果在交易选项里使用了 <strong>Exit At End Of Day</strong> 当天收盘平仓 或<strong>Exit On Friday</strong> 周五收盘平仓，建议将其平仓时间设置为<strong>00:00</strong>，这样SQ会在当天或周五的最后一个交易小节结束时平仓。如果你要指定具体的平仓时间，<strong>确保设定的时间在当天收盘前之前</strong>。  </p>
-<p><strong>6, 尝试删除SQ缓存文件</strong><br>如果SQ中策略表现与在MC/TS中表现不一致，在确认以上设置无问题后，有可能是SQ使用的缓存数据较旧有关系。可以尝试，先关闭SQ软件，删除 /internal/testfiles文件夹，然后再重新打开SQ。  </p>
-<p><strong>7，其他须知</strong></p>
-<ul>
-<li>多品种或多周期（如MC中Subcharts调用其他品种或其他周期)还不支持MC/TS</li>
-<li>测试精度目前只能使用当前周期Selected Timeframe</li>
-<li>某些指标可能导致回测结算不一致,如Pivots,Fibo</li>
-</ul>
-<p>参考资料:<a href="https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/" target="_blank" rel="noopener">https://strategyquant.com/doc/reliable-backtesting-in-tradestation-multicharts/</a>  </p>
 
             </div>
             <hr/>
@@ -464,7 +443,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://quantwin.com.cn/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/">http://quantwin.com.cn/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/</a>
+                    <a href="http://quantwin.com.cn/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/">http://quantwin.com.cn/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,24 +481,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/StrategyQuant/">
-                                    <span class="chip bg-color">StrategyQuant</span>
-                                </a>
-                            
                                 <a href="/tags/MultiCharts/">
                                     <span class="chip bg-color">MultiCharts</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE/">
-                                    <span class="chip bg-color">数据</span>
+                                <a href="/tags/QuantAnalyzer/">
+                                    <span class="chip bg-color">QuantAnalyzer</span>
                                 </a>
                             
-                                <a href="/tags/Session/">
-                                    <span class="chip bg-color">Session</span>
-                                </a>
-                            
-                                <a href="/tags/Tradestation/">
-                                    <span class="chip bg-color">Tradestation</span>
+                                <a href="/tags/%E7%AD%96%E7%95%A5/">
+                                    <span class="chip bg-color">策略</span>
                                 </a>
                             
                         </div>
@@ -685,9 +656,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/">
                     <div class="card-image">
@@ -710,9 +682,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -725,6 +697,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -751,34 +724,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/23/strategyquant-dao-ru-ce-shi-shu-ju/">
+                <a href="/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="StrategyQuant导入测试数据">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="提高Strategyquant创建期货交易策略的可靠性">
                         
-                        <span class="card-title">StrategyQuant导入测试数据</span>
+                        <span class="card-title">提高Strategyquant创建期货交易策略的可靠性</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            StrategyQuant创建交易策略的大体流程分为:  
-
-导入历史价格数据，新交易品种需要先设定品种属性
-设置Builde有关选项，运行开始生成策略
-对策略进行健壮测试
-将策略复制到相应程序化交易平台测试运行  
-
-
-
-
-本篇文章将介绍
+                            对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-28
                             </span>
                         <span class="publish-author">
                             
@@ -786,6 +749,10 @@
                             
                             <a href="/categories/StrategyQuant/" class="post-category">
                                     StrategyQuant
+                                </a>
+                            
+                            <a href="/categories/StrategyQuant/MultiCharts/" class="post-category">
+                                    MultiCharts
                                 </a>
                             
                             
@@ -809,6 +776,10 @@
                     
                     <a href="/tags/Session/">
                         <span class="chip bg-color">Session</span>
+                    </a>
+                    
+                    <a href="/tags/Tradestation/">
+                        <span class="chip bg-color">Tradestation</span>
                     </a>
                     
                 </div>

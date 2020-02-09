@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何分析策略未来表现</title>
+    <url>/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/</url>
+    <content><![CDATA[<p>在使用程序化交易时，我们肯定会遇到这样的困惑：  </p>
+<ul>
+<li>这个策略通过了历史回测，可是它在未来的市场行情变动中，表现是否会很好？</li>
+<li>某个策略运行一段时间后，产生一些交易，其中有盈有亏，这个策略是否还要继续运行下去？  </li>
+</ul>
+<p>我们这次先主要讨论第一个问题。  </p>
+<p>这里需要用到一个工具， <a href="https://strategyquant.sjv.io/c/1353913/616767/8548" title="[external] [超链接]" target>QuantAnalyzer</a> 。这是StrategyQuant公司开发一款可以免费使用的策略分析工具。它可以分析交易策略回测的绩效报告，或者对比策略在SQ与在交易平台或实盘的差异，来评估策略表现以及有无优化的空间。它支持以下诸多平台,  </p>
+<p><img src="http://strategyquant.com/wp-content/uploads/2018/03/support.png" alt>  </p>
+<a href="https://strategyquant.sjv.io/c/1353913/616767/8548" title="[external] [超链接]" target>点这里下载QuantAnalyzer</a> ，注意是点击右侧的Download，然后下载。  
+
+<p><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/dw.png" alt></p>
+<a href="https://pan.baidu.com/mall/product/detail/album?pid=2308402367340478465" title="[external] [超链接]" target>操作演示视频</a> ,请在电脑上用谷歌浏览器或Edge浏览器打开。
+
+<p>QuantAnalyzer有以下主要功能。  </p>
+<ul>
+<li>交易结果分析。这一点与Strategyquant中的策略绩效分析基本类似。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/tradelist.png" alt>  </li>
+<li>权益曲线控制。这是一个很意思的测试，其目的是根据过去一段时间的策略表现，来调整策略后面的动作（如停止交易，调减交易手数等）。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/equity.png" alt>  </li>
+<li>蒙特卡洛模拟。这个与Strategyquant中对交易结果进行最简单蒙特卡洛模拟操作类似，不过多了一个对未来的策略表现的统计预测，可以参考。<br><img src="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/forecast.png" alt></li>
+<li>假设场景。譬如某天或某天某个时间不交易，绩效会如何。（本人没太使用这个功能，或许你有好的理解和应用）</li>
+<li>组合管理。可以根据策略绩效表现(不限品种，周期），来自动构建策略组合。可以参考。</li>
+<li>资金管理。与Strategyquant的资金管理类似，其实是仓位管理。主要是海龟式的仓位管理。意义不大。  </li>
+</ul>
+]]></content>
+      <categories>
+        <category>QuantAnalyzer</category>
+      </categories>
+      <tags>
+        <tag>MultiCharts</tag>
+        <tag>QuantAnalyzer</tag>
+        <tag>策略</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>提高Strategyquant创建期货交易策略的可靠性</title>
     <url>/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/</url>
     <content><![CDATA[<p>对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：  </p>
