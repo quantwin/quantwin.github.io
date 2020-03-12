@@ -4,11 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="StrategyQuant界面菜单介绍2, Strategyquant,策略,模型,EA,程序化">
-    <meta name="description" content="Genetic options 遗传编程选项What to build中如果选择了遗传进化的策略生成模式，接下来是遗传编程的选项设置。  
-
-Genetic options  遗传编程常规选项
-Islands options  独立进化岛选">
+    <meta name="keywords" content="构建系统交易的十种方法, Strategyquant,策略,模型,EA,程序化">
+    <meta name="description" content="交易规则是交易系统和自动交易策略的基础。它们由技术指标或其他数学函数组成，用于在金融市场生成客观的买入和卖出信号。一些最流行的方法在计算机出现之前就一直在使用，而其他方法则较新。本文列出了交易系统中最流行的系统方法的十种。
+1、移动平均线交">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@ Islands options  独立进化岛选">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>StrategyQuant界面菜单介绍2 | QuantWin</title>
+    <title>构建系统交易的十种方法 | QuantWin</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/easyicon_net_32.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -227,7 +225,7 @@ Islands options  独立进化岛选">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">StrategyQuant界面菜单介绍2</h1>
+                    <h1 class="description center-align post-title">构建系统交易的十种方法</h1>
                 </div>
             </div>
         </div>
@@ -344,24 +342,8 @@ Islands options  独立进化岛选">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/StrategyQuant/">
-                                <span class="chip bg-color">StrategyQuant</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%95%8C%E9%9D%A2/">
-                                <span class="chip bg-color">界面</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%8F%9C%E5%8D%95/">
-                                <span class="chip bg-color">菜单</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%B8%AD%E6%96%87/">
-                                <span class="chip bg-color">中文</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%B1%89%E5%8C%96/">
-                                <span class="chip bg-color">汉化</span>
+                            <a href="/tags/%E7%AD%96%E7%95%A5/">
+                                <span class="chip bg-color">策略</span>
                             </a>
                         
                     </div>
@@ -372,8 +354,8 @@ Islands options  独立进化岛选">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/StrategyQuant/" class="post-category">
-                                StrategyQuant
+                            <a href="/categories/%E7%AD%96%E7%95%A5/" class="post-category">
+                                策略
                             </a>
                         
                     </div>
@@ -385,7 +367,7 @@ Islands options  独立进化岛选">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-20
+                    2020-03-12
                 </div>
                 
 
@@ -402,33 +384,19 @@ Islands options  独立进化岛选">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Genetic-options-遗传编程选项"><a href="#Genetic-options-遗传编程选项" class="headerlink" title="Genetic options 遗传编程选项"></a>Genetic options 遗传编程选项</h1><p><strong>What to build</strong>中如果选择了遗传进化的策略生成模式，接下来是遗传编程的选项设置。  </p>
-<ul>
-<li>Genetic options  遗传编程常规选项</li>
-<li>Islands options  独立进化岛选项</li>
-<li>Initial population generation  初始种群生成设置 </li>
-<li>Filter generated initial population  初始种群过滤设置</li>
-<li>“Fresh blood”  “新鲜血液”，控制如何选择相似策略或每几代更替最差的策略</li>
-<li>Evolution management 进化控制选项  <a id="more"></a>  
-<h2 id="Genetic-options"><a href="#Genetic-options" class="headerlink" title="Genetic options"></a>Genetic options</h2></li>
-</ul>
-<p><strong>Max # of Generations</strong>  进化的最大代数</p>
-<p>每个种群的策略会进化多少代。推荐值5-100，设置过大并无太多实际意义。  </p>
-<p><strong>Population size( per island)</strong> 每个”岛”的种群大小  </p>
-<p>在引进岛的概念之后，总的初始种群数量为 每个岛的种群数量 &#42;岛数，推荐值为100或更多，根据自己的电脑性能设定。  </p>
-<p><strong>Crossover probability</strong> 基因交叉概率  </p>
-<p>遗传编程 GP 或遗传算法 GA 中最基本的设置之一。简单理解，在Strategyquant X中，策略都是是由于构建块组成的。交叉就是指策略A和另外的策略B中的某些构建块进行交换，这个交叉概率就是控制种群中策略间多大程度上进行构建块的交换。  </p>
-<p><strong>Mutation probability</strong> 基因突变概率  </p>
-<p>也是 GP或GA中的基本设置之一。在策略生成过程中，突变概率控制策略内部的构建块更换的概率。数值越大，越容易获得多样化的策略。交叉概率 和 变异概率的设置范围没有标准的范围参考,但可以简单理解，交叉概率越大，策略相似性越大，突变概率越大越容易生成多样化的策略。  </p>
-<h2 id="Islands-options"><a href="#Islands-options" class="headerlink" title="Islands options"></a>Islands options</h2><p>岛的概念进一步模拟了现实世界的进化过程。每个岛一开始是独立的种群，然后通过<strong>Islands</strong>岛的数量、每进化多少代移民（岛之间交换策略）<strong>Migrate every Xth generation</strong> 和 移民比例 <strong>Population migration rate</strong> 三个选项来控制岛对总体种群进化的影响。  </p>
-<p><strong>Islands</strong>的数量建议设置范围1-10。<br><strong>Migrate every Xth generation</strong>的建议设置范围为左右<strong>Max # of Generations</strong>的1/4到2/3，但不要设置太小。推荐值为10。<br><strong>Population migration rate</strong> 建议值为1-5个策略，如果左侧种群数量为100，则这个移民率设置为1%-5%。  </p>
-<h2 id="Initial-population-generation"><a href="#Initial-population-generation" class="headerlink" title="Initial population generation"></a>Initial population generation</h2><p><img src="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/initialpopulation.png" alt>  </p>
-<p><strong>Use strategies from Initial population databank as evolution start</strong> 使用已有策略来作为初始策略库来开始进化，如果导入的策略数量达到要求的种群大小，StrategyQuant会进一步随机生成策略，直到达到设置所要求的数量。 </p>
-<p>当打开该选项时，下方数据库里会多出一个叫<strong>Initial population</strong>的数据库，点击它下方的Load按扭来导入已有的Strategyquant策略。  </p>
-<p><strong>Generated decimation coefficient</strong> 抽取系数。其实这里叫做生成倍数似乎更容易理解。举例说明，假设前面通过设置种群大小和岛数，使初始策略种群为400个策略，如果设置抽取系数为3，则表示一开始要生成1200个通过了右侧过滤条件的策略，然后从中选出排名前400个策略来作为初始种群。通过这项设置可以进一步提升初始策略的质量，但会需要电脑更多的计算时间。你要关注总体的初始策略数量（如本例中的1200），根据电脑性能合理设置以上有关选项。  </p>
-<h2 id="Filter-generated-initial-population"><a href="#Filter-generated-initial-population" class="headerlink" title="Filter generated initial population"></a>Filter generated initial population</h2><p>用于过滤、筛选初始策略。注意这里不要使用过于严格绩效评价限制。推荐只使用#trades &gt; 0 或 net profit &gt; 0 等条件。  </p>
-<h2 id="“Fresh-blood”"><a href="#“Fresh-blood”" class="headerlink" title="“Fresh blood”"></a>“Fresh blood”</h2><p><img src="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/fresh.png" alt>  </p>
-<h2 id="Evolution-management"><a href="#Evolution-management" class="headerlink" title="Evolution management"></a>Evolution management</h2><p>最后这两项设置里评价策略好坏，是基于后面<strong>Ranking</strong>里的设置，图例为建议打开的选项。具体数值可以根据前面设置来调整这里的具体数值或范围。  </p>
+                <p>交易规则是交易系统和自动交易策略的基础。它们由技术指标或其他数学函数组成，用于在金融市场生成客观的买入和卖出信号。一些最流行的方法在计算机出现之前就一直在使用，而其他方法则较新。本文列出了交易系统中最流行的系统方法的十种。</p>
+<p>1、移动平均线交叉。基于两个不同长度的移动平均线线交叉的交易系统可能是最常见的交易规则。该方法还包括三重移动平均线交叉，以及移动平均线收敛背离 （MACD） 指标，这是两个指数移动平均线线之间的差异。移动平均线线本身可以通过多种方式计算，例如简单、指数、加权等。</p>
+<p>2、通道突破。在此方法中，价格通道由过去某些K线的最高的最高价和最低的最低价定义。当市场在突破通道上方或下方时，会发出交易信号。这也称为 Donchian 通道，传统上使用 20 天的回溯长度。著名的”海龟”系统据称基于通道突破。</p>
+<p>3、波动突破。这些在某些方面与通道突破类似，只是突破不是使用最高高点和最低低点，而是基于所谓的波动性。波动率通常由平均真实范围 （ATR） 表示。在当前K线价格加上或减去ATR值，以确定突破价格。</p>
+<p>4、支撑/阻力。这种方法基于这样一种观点，即如果市场低于阻力位，则很难越过该价格，而如果高于支撑水平，则很难跌破该价格。当市场突破支撑或阻力位时，这被认为是重要的。此外，当市场突破阻力位时，该价格将成为新的支撑水平。同样，当市场跌破支撑水平时，该价格将成为新的阻力位。支撑和阻力水平通常基于近期的重要价格，如近期的高点和低点或反转点。</p>
+<p>5、振荡指标和循环周期。典型的振荡指标包括随机指标、Williams %R、变化率 （ROC） 和相对强度指标 （RSI）等。振荡指标也揭示了市场的周期性。也可以采用更直接的循环分析方法，例如计算主周期长度。周期长度可用作对其他指标的输入或价格预测方法的一部分。</p>
+<p>6、价格形态。价格形态可以很简单，如不断走高的收盘价就是一个形态，也可以像头肩顶底一样复杂。已经写了许多关于在交易中使用价格形态的书籍。日本蜡烛图技术即是一种分类不同价格形态并将其与市场行为联系起来的方法。</p>
+<p>7、价格包络线(ENV)。在价格上方和下方构建一个通道，价格通常保持在这个通道内。布林带，可能是最常用的价格包络类型。交易信号通常在市场触及或穿过上带或下波段时生成。</p>
+<p>8、日内时间交易/周间日交易。基于时间或周内某一天的交易方法相当普遍。标准普尔500期货的一个众所周知的交易系统在周一开盘买入，并在收盘时退出。它利用了当时市场在周一交易的趋势。其他系统方法将交易限制在一天中的特定时间，这些时候容易出现特定的形态，如趋势、反转或高流动性。</p>
+<p>9、成交量。许多交易规则仅基于价格（开盘价、最高价、最低价和收盘价）。然而，交易量是市场数据的基本组成部分之一。因此，基于成交量的方法虽然不如基于价格的方法常见，但值得注意。通常，交易者使用交易量来确认或验证市场走势。一些基于交易量的最常见系统方法是基于交易量的指标，如OBV、累积/派发线和 Chaiken 振荡指标。</p>
+<p>10、预测。市场预测使用数学方法预测未来某个时候的市场价格。预测从性质上不同于上面列出的方法。1-9这些方法旨在识别可交易的市场趋势或模式。相反，如果预测市场从今天起一周走高，则基于预测的交易系统今天可能会买入。</p>
+<p>请记住，上面方法是常见的交易系统方法，但不代表这些方法必然盈利。成功的交易系统通常采用多种方法的组合，而且往往采用非常规的方式。此外，在某些情况下，其他不太流行的方法可能更具有盈利能力。  </p>
+<a href="http://www.adaptrade.com/Articles/article-sys-top.htm" target="_blank" rel="noopener" title="[external] [超链接]" target>原文链接</a> 
 
             </div>
             <hr/>
@@ -454,7 +422,7 @@ Islands options  独立进化岛选">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://quantwin.com.cn/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/">http://quantwin.com.cn/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-2/</a>
+                    <a href="http://quantwin.com.cn/2020/03/12/gou-jian-xi-tong-jiao-yi-de-shi-chong-fang-fa/">http://quantwin.com.cn/2020/03/12/gou-jian-xi-tong-jiao-yi-de-shi-chong-fang-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -492,24 +460,8 @@ Islands options  独立进化岛选">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/StrategyQuant/">
-                                    <span class="chip bg-color">StrategyQuant</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%95%8C%E9%9D%A2/">
-                                    <span class="chip bg-color">界面</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%8F%9C%E5%8D%95/">
-                                    <span class="chip bg-color">菜单</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%B8%AD%E6%96%87/">
-                                    <span class="chip bg-color">中文</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%B1%89%E5%8C%96/">
-                                    <span class="chip bg-color">汉化</span>
+                                <a href="/tags/%E7%AD%96%E7%95%A5/">
+                                    <span class="chip bg-color">策略</span>
                                 </a>
                             
                         </div>
@@ -675,75 +627,49 @@ Islands options  独立进化岛选">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/20/strategyquant-jie-mian-cai-dan-jie-shao-3/">
+                <a href="/2020/03/12/gou-jian-xi-tong-jiao-yi-de-shi-chong-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="StrategyQuant界面菜单介绍3">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="构建系统交易的十种方法">
                         
-                        <span class="card-title">StrategyQuant界面菜单介绍3</span>
+                        <span class="card-title">构建系统交易的十种方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在遗传编程选项中的进化控制中，我们会根据种群策略在历史数据的样本内数据（验证部分）的表现来决定进化过程是否继续还是重新生成初始种群开始。这里可以用到不同的数据集，样本内（全部），样本内（训练部分），样本外（验证部分）。  
-数据分段设置，是
+                            交易规则是交易系统和自动交易策略的基础。它们由技术指标或其他数学函数组成，用于在金融市场生成客观的买入和卖出信号。一些最流行的方法在计算机出现之前就一直在使用，而其他方法则较新。本文列出了交易系统中最流行的系统方法的十种。
+1、移动平均线交
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/StrategyQuant/" class="post-category">
-                                    StrategyQuant
+                            <a href="/categories/%E7%AD%96%E7%95%A5/" class="post-category">
+                                    策略
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/StrategyQuant/">
-                        <span class="chip bg-color">StrategyQuant</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE/">
-                        <span class="chip bg-color">数据</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%95%8C%E9%9D%A2/">
-                        <span class="chip bg-color">界面</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%8F%9C%E5%8D%95/">
-                        <span class="chip bg-color">菜单</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%B8%AD%E6%96%87/">
-                        <span class="chip bg-color">中文</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B1%89%E5%8C%96/">
-                        <span class="chip bg-color">汉化</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%86%85/">
-                        <span class="chip bg-color">样本内</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%A4%96/">
-                        <span class="chip bg-color">样本外</span>
+                    <a href="/tags/%E7%AD%96%E7%95%A5/">
+                        <span class="chip bg-color">策略</span>
                     </a>
                     
                 </div>
@@ -757,32 +683,36 @@ Islands options  独立进化岛选">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/19/strategyquant-xia-zai-yu-an-zhuang/">
+                <a href="/2020/02/05/ru-he-fen-xi-ce-lue-wei-lai-biao-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="StrategyQuant下载与安装">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="如何分析策略未来表现">
                         
-                        <span class="card-title">StrategyQuant下载与安装</span>
+                        <span class="card-title">如何分析策略未来表现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                              
-下载&emsp;&emsp;StrategyQuant非常厚道地提供了14天的免费试用，并且软件功能上无任何限制。（内置的数据源下载因为某些众周知的原因可能无法使用。不过本来这也不是我们看重的功能。）StrategyQuant软件的重
+                            在使用程序化交易时，我们肯定会遇到这样的困惑：  
+
+这个策略通过了历史回测，可是它在未来的市场行情变动中，表现是否会很好？
+某个策略运行一段时间后，产生一些交易，其中有盈有亏，这个策略是否还要继续运行下去？  
+
+我们这次先主要讨论第一个
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/StrategyQuant/" class="post-category">
-                                    StrategyQuant
+                            <a href="/categories/QuantAnalyzer/" class="post-category">
+                                    QuantAnalyzer
                                 </a>
                             
                             
@@ -792,20 +722,16 @@ Islands options  独立进化岛选">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/StrategyQuant/">
-                        <span class="chip bg-color">StrategyQuant</span>
+                    <a href="/tags/MultiCharts/">
+                        <span class="chip bg-color">MultiCharts</span>
                     </a>
                     
-                    <a href="/tags/%E4%B8%8B%E8%BD%BD/">
-                        <span class="chip bg-color">下载</span>
+                    <a href="/tags/QuantAnalyzer/">
+                        <span class="chip bg-color">QuantAnalyzer</span>
                     </a>
                     
-                    <a href="/tags/%E4%BC%98%E6%83%A0%E7%A0%81/">
-                        <span class="chip bg-color">优惠码</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%A6%8F%E5%88%A9/">
-                        <span class="chip bg-color">福利</span>
+                    <a href="/tags/%E7%AD%96%E7%95%A5/">
+                        <span class="chip bg-color">策略</span>
                     </a>
                     
                 </div>
