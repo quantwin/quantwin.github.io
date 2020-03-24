@@ -4,17 +4,23 @@
     <title>优化轮廓与参数序列</title>
     <url>/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/</url>
     <content><![CDATA[<p>在开发交易策略的过程中，如何减少策略的过拟合风险是一个比较普遍的问题。SQ中提供了一系列策略健壮性检验的方法，包括常见的对价格历史数据划分样本内样本外，多品种或相邻周期的价格序列测试，蒙特卡洛模拟等，前文我们探讨了Walk-forward也可以作为检验策略健壮性的工具。但Walk-forward测试比较耗时，对于策略对于参数是否敏感可以使用<strong>优化轮廓与参数序列</strong> Optimization Profile and System Parameter Permutation。  </p>
-<p>将策略中涉及的参数进化变量化存储，然后尝试使用不同的参数组合去测试策略，以检验策略的健壮性。在SQ中使用推荐设置已经比较智能化地将那些有必要有参数进行变量化处理。  </p>
+<p>将策略中涉及的参数进化变量化存储，然后尝试使用不同的参数组合去测试策略，以检验策略的健壮性。在SQ中使用推荐设置已经智能化地将那些有必要的参数进行了变量化处理。  </p>
 <p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/param.png" alt>  </p>
 <p>在SQ中进行策略参数序列测试非常简单，基本上使用默认或推荐设置就可以。  </p>
 <p><strong>优化轮廓主要关注以下几项</strong>  </p>
-<p>1、在优化测试的过程，我们会运行很多次，譬如1000个参数组合，有多少是盈利的。也就是要看一下参数在一定范围内变动时，策略稳定性如何。  </p>
+<p>1、在优化测试的过程，会运行很多次，譬如1000个参数组合，看看有多少是盈利的。也就是要看一下参数在一定范围内变动时，策略稳定性如何。  </p>
 <p>2、所有的优化测试的利润平均值应该大于零。  </p>
-<p>3、优化测试的利润表现尽可能具有一致性。这意味着策略利润表现不要忽正忽负，忽高忽低，太跳跃。  </p>
-<p>4、表现最好的参数组合的利润不能太高，譬如与所有测试的利润均值相比，在其1个标准差之内。这是为了排除某一组参数的利润过高造成对平均结果的误判。（实践过程中，个人发现这一条检验比较苛刻，似乎很难满足。其实我们看利润的中位数，也能起到类似的检验作用）  </p>
-<p>5、在策略参数的3D图表上，参数组合要相对稳定。要查看该选项，首先在设置中打开3D图表选项。但实际上这部分，个人认为也并不是必要的，因为SQ中使用遗传进化生成的策略对于参数已经有一些优化选择，而且策略可能涉及两三个指标，再加上进出场相关参数，数目并不小，我们在一个3D图表上只能查看2个参数的表现，并不能查看到全貌。而且我们本来用SQ这种高效的方式去批量生成策略，现在又回头来去根据细节表现手动调整某个策略的参数？  </p>
+<p>3、优化测试的利润表现尽可能具有一致性。这意味着策略利润表现不要忽正忽负，忽高忽低，过于跳跃。  </p>
+<p>4、表现最好的参数组合的利润不能太高，譬如与所有测试的利润均值相比，在其1个标准差之内。这是为了排除某一组参数的利润过高造成对平均表现的误判。（实践过程中，个人发现这一条检验比较苛刻，似乎很难满足。其实我们看利润的中位数，也能起到类似的检验作用。在<strong>Sys. Param Permutation</strong> 标签页可以看到中位数统计值的表现。）  </p>
+<p>5、在策略参数表现的3D图表上，参数组合要相对稳定。要查看该选项，首先在设置中打开3D图表选项，默认是关闭的。但实际上这部分，个人认为也并不是必要的，因为SQ中使用遗传进化生成的策略对于参数已经有一些优化选择，而且策略可能涉及两三个指标，再加上进出场相关参数，数目并不小，我们在一个3D图表上只能同时查看2个参数的表现，并不能查看到全貌。  </p>
 <p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/profile.png" alt>  </p>
-<p><strong>在优化轮廓的下一标签页中就会显示优化测试的中位数统计值及相关绩效值的分布图</strong>。</p>
+<p><strong>在优化轮廓的下一标签页中就会显示优化测试的中位数统计值及相关绩效值的分布图</strong>。  </p>
+<p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/median.png" alt>  </p>
+<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a>提供了14天的免费试用，想体验软件强大的策略构建功能，可以到官网自行申请试用下载。  
+
+<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>点此下载</a>。  
+
+<p>在官网中间栏，点击按扭<strong>Get free trial NOW</strong>，申请试用授权码。  </p>
 ]]></content>
       <categories>
         <category>StrategyQuant</category>
@@ -56,6 +62,16 @@
 <p>1、策略的内在逻辑，比参数更重要；</p>
 <p>2、如果使用遗传进化模式来生成的策略，并通过一系列健壮性测试后，其参数组合已经是比较好的一组。</p>
 <p>如果将Walk-forward测试用于策略健壮性的测试，由于其计算时间较长，投入产出比并不合适。其实我们可以选择<strong>优化轮廓与参数序列</strong>Optimization Profile and System Parameter Permutation。 </p>
+<a href="https://quantwin.com.cn/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie" title="[external] [超链接]" target>优化轮廓与参数序列</a>  。  
+
+
+
+
+  <a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a>提供了14天的免费试用，想体验软件强大的策略构建功能，可以到官网自行申请试用下载。  
+
+  <a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>点此下载</a>。  
+
+<p>在官网中间栏，点击按扭<strong>Get free trial NOW</strong>，申请试用授权码。  </p>
 ]]></content>
       <categories>
         <category>StrategyQuant</category>
@@ -122,8 +138,8 @@
       </categories>
       <tags>
         <tag>MultiCharts</tag>
-        <tag>QuantAnalyzer</tag>
         <tag>策略</tag>
+        <tag>QuantAnalyzer</tag>
       </tags>
   </entry>
   <entry>
@@ -327,11 +343,11 @@
       </categories>
       <tags>
         <tag>StrategyQuant</tag>
-        <tag>数据</tag>
         <tag>界面</tag>
         <tag>菜单</tag>
         <tag>中文</tag>
         <tag>汉化</tag>
+        <tag>数据</tag>
         <tag>样本内</tag>
         <tag>样本外</tag>
       </tags>
