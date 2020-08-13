@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SQX重大更新 SQ X 129版正式发布</title>
+    <url>/2020/08/13/sqx-chong-da-geng-xin-fa-bu/</url>
+    <content><![CDATA[<p>重大更新！号称基本修复已知重大Bug！<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a> X 最新稳定本129于8月11日正式发布。  </p>
+<ul>
+<li>修订Hammer, PiercingLine的蜡烛图形态定义错误  </li>
+<li>修订IsRising / IsFalling的错误</li>
+<li>增加了Fractals指标  </li>
+</ul>
+<p>对于笔者而言，还有几个更新比较实用,  </p>
+<ul>
+<li>品种属性、Sessions小节划分等可以备份导出导入，即使全新安装也可轻松对接之前版本的数据、工程</li>
+<li>自定义策略模板里可以使用自定义指标数据  </li>
+</ul>
+<p>建议先下载mini版本，直接覆盖原来的文件目录。若涉及跨版本升级导致不能正常运行，则需要下载完整版本重新解压使用。  </p>
+<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>StrategyQuant</a>提供了14天的免费试用，想体验软件强大的策略构建功能，可以到官网自行申请试用下载。  
+
+<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" title="[external] [超链接]" target>点此下载</a>。  
+
+<p>在官网中间栏，点击按扭<strong>Get free trial NOW</strong>，申请试用授权码。  </p>
+<p>若软件下载或使用遇到问题，可与我联系。</p>
+]]></content>
+      <categories>
+        <category>StrategyQuant</category>
+      </categories>
+      <tags>
+        <tag>StrategyQuant</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>优化轮廓与参数序列</title>
     <url>/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/</url>
     <content><![CDATA[<p>在开发交易策略的过程中，如何减少策略的过拟合风险是一个比较普遍的问题。SQ中提供了一系列策略健壮性检验的方法，包括常见的对价格历史数据划分样本内样本外，多品种或相邻周期的价格序列测试，蒙特卡洛模拟等，前文我们探讨了Walk-forward也可以作为检验策略健壮性的工具。但Walk-forward测试比较耗时，对于策略对于参数是否敏感可以使用<strong>优化轮廓与参数序列</strong> Optimization Profile and System Parameter Permutation。  </p>

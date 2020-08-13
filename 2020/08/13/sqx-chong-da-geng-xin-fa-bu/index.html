@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="优化轮廓与参数序列, Strategyquant,策略,模型,EA,程序化">
-    <meta name="description" content="在开发交易策略的过程中，如何减少策略的过拟合风险是一个比较普遍的问题。SQ中提供了一系列策略健壮性检验的方法，包括常见的对价格历史数据划分样本内样本外，多品种或相邻周期的价格序列测试，蒙特卡洛模拟等，前文我们探讨了Walk-forward也">
+    <meta name="keywords" content="SQX重大更新 SQ X 129版正式发布, Strategyquant,策略,模型,EA,程序化">
+    <meta name="description" content="重大更新！号称基本修复已知重大Bug！StrategyQuant X 最新稳定本129于8月11日正式发布。  
+
+修订Hammer, PiercingLine的蜡烛图形态定义错误  
+修订IsRising / IsFalling的错误
+增">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>优化轮廓与参数序列 | QuantWin</title>
+    <title>SQX重大更新 SQ X 129版正式发布 | QuantWin</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/easyicon_net_32.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -224,7 +228,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">优化轮廓与参数序列</h1>
+                    <h1 class="description center-align post-title">SQX重大更新 SQ X 129版正式发布</h1>
                 </div>
             </div>
         </div>
@@ -345,14 +349,6 @@
                                 <span class="chip bg-color">StrategyQuant</span>
                             </a>
                         
-                            <a href="/tags/%E7%AD%96%E7%95%A5/">
-                                <span class="chip bg-color">策略</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%81%A5%E5%A3%AE%E6%80%A7/">
-                                <span class="chip bg-color">健壮性</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -374,7 +370,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-24
+                    2020-08-13
                 </div>
                 
 
@@ -391,24 +387,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在开发交易策略的过程中，如何减少策略的过拟合风险是一个比较普遍的问题。SQ中提供了一系列策略健壮性检验的方法，包括常见的对价格历史数据划分样本内样本外，多品种或相邻周期的价格序列测试，蒙特卡洛模拟等，前文我们探讨了Walk-forward也可以作为检验策略健壮性的工具。但Walk-forward测试比较耗时，对于策略对于参数是否敏感可以使用<strong>优化轮廓与参数序列</strong> Optimization Profile and System Parameter Permutation。  </p>
-<p>将策略中涉及的参数进化变量化存储，然后尝试使用不同的参数组合去测试策略，以检验策略的健壮性。在SQ中使用推荐设置已经智能化地将那些有必要的参数进行了变量化处理。  </p>
-<p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/param.png" alt>  </p>
-<p>在SQ中进行策略参数序列测试非常简单，基本上使用默认或推荐设置就可以。  </p>
-<p><strong>优化轮廓主要关注以下几项</strong>  </p>
-<p>1、在优化测试的过程，会运行很多次，譬如1000个参数组合，看看有多少是盈利的。也就是要看一下参数在一定范围内变动时，策略稳定性如何。  </p>
-<p>2、所有的优化测试的利润平均值应该大于零。  </p>
-<p>3、优化测试的利润表现尽可能具有一致性。这意味着策略利润表现不要忽正忽负，忽高忽低，过于跳跃。  </p>
-<p>4、表现最好的参数组合的利润不能太高，譬如与所有测试的利润均值相比，在其1个标准差之内。这是为了排除某一组参数的利润过高造成对平均表现的误判。（实践过程中，个人发现这一条检验比较苛刻，似乎很难满足。其实我们看利润的中位数，也能起到类似的检验作用。在<strong>Sys. Param Permutation</strong> 标签页可以看到中位数统计值的表现。）  </p>
-<p>5、在策略参数表现的3D图表上，参数组合要相对稳定。要查看该选项，首先在设置中打开3D图表选项，默认是关闭的。但实际上这部分，个人认为也并不是必要的，因为SQ中使用遗传进化生成的策略对于参数已经有一些优化选择，而且策略可能涉及两三个指标，再加上进出场相关参数，数目并不小，我们在一个3D图表上只能同时查看2个参数的表现，并不能查看到全貌。  </p>
-<p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/profile.png" alt>  </p>
-<p><strong>在优化轮廓的下一标签页中就会显示优化测试的中位数统计值及相关绩效值的分布图</strong>。  </p>
-<p><img src="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/median.png" alt>  </p>
+                <p>重大更新！号称基本修复已知重大Bug！<a href="https://strategyquant.sjv.io/c/1353913/499938/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>StrategyQuant</a> X 最新稳定本129于8月11日正式发布。  </p>
+<ul>
+<li>修订Hammer, PiercingLine的蜡烛图形态定义错误  </li>
+<li>修订IsRising / IsFalling的错误</li>
+<li>增加了Fractals指标  </li>
+</ul>
+<p>对于笔者而言，还有几个更新比较实用,  </p>
+<ul>
+<li>品种属性、Sessions小节划分等可以备份导出导入，即使全新安装也可轻松对接之前版本的数据、工程</li>
+<li>自定义策略模板里可以使用自定义指标数据  </li>
+</ul>
+<p>建议先下载mini版本，直接覆盖原来的文件目录。若涉及跨版本升级导致不能正常运行，则需要下载完整版本重新解压使用。  </p>
 <a href="https://strategyquant.sjv.io/c/1353913/499938/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>StrategyQuant</a>提供了14天的免费试用，想体验软件强大的策略构建功能，可以到官网自行申请试用下载。  
 
 <a href="https://strategyquant.sjv.io/c/1353913/499938/8548" target="_blank" rel="noopener" title="[external] [超链接]" target>点此下载</a>。  
 
 <p>在官网中间栏，点击按扭<strong>Get free trial NOW</strong>，申请试用授权码。  </p>
+<p>若软件下载或使用遇到问题，可与我联系。</p>
 
             </div>
             <hr/>
@@ -434,7 +430,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://quantwin.com.cn/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/">http://quantwin.com.cn/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/</a>
+                    <a href="http://quantwin.com.cn/2020/08/13/sqx-chong-da-geng-xin-fa-bu/">http://quantwin.com.cn/2020/08/13/sqx-chong-da-geng-xin-fa-bu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -474,14 +470,6 @@
                             
                                 <a href="/tags/StrategyQuant/">
                                     <span class="chip bg-color">StrategyQuant</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%AD%96%E7%95%A5/">
-                                    <span class="chip bg-color">策略</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%81%A5%E5%A3%AE%E6%80%A7/">
-                                    <span class="chip bg-color">健壮性</span>
                                 </a>
                             
                         </div>
@@ -647,9 +635,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/08/13/sqx-chong-da-geng-xin-fa-bu/">
                     <div class="card-image">
@@ -671,9 +660,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -686,6 +675,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -704,24 +694,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/23/ce-lue-can-shu-you-hua-shi-fou-you-yong/">
+                <a href="/2020/03/24/you-hua-lun-kuo-yu-can-shu-xu-lie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="策略参数优化是否有用">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="优化轮廓与参数序列">
                         
-                        <span class="card-title">策略参数优化是否有用</span>
+                        <span class="card-title">优化轮廓与参数序列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在使用机械系统进行期货外汇交易时，往往会有两种声音。一种是要优化策略的参数，希望取得更好的绩效；相反的一种观点认为，参数优化只是匹配历史数据，会增加过拟合的风险。那么在StrategyQuant 中关于参数优化是如何进行，又有什么作用呢？ 
+                            在开发交易策略的过程中，如何减少策略的过拟合风险是一个比较普遍的问题。SQ中提供了一系列策略健壮性检验的方法，包括常见的对价格历史数据划分样本内样本外，多品种或相邻周期的价格序列测试，蒙特卡洛模拟等，前文我们探讨了Walk-forward也
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-24
                             </span>
                         <span class="publish-author">
                             
@@ -746,12 +736,8 @@
                         <span class="chip bg-color">策略</span>
                     </a>
                     
-                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%86%85/">
-                        <span class="chip bg-color">样本内</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%A4%96/">
-                        <span class="chip bg-color">样本外</span>
+                    <a href="/tags/%E5%81%A5%E5%A3%AE%E6%80%A7/">
+                        <span class="chip bg-color">健壮性</span>
                     </a>
                     
                 </div>
