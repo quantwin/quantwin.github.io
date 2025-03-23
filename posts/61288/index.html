@@ -1,0 +1,1245 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="StrategyQuant内置指标介绍, Strategyquant,策略,模型,EA,程序化">
+    <meta name="description" content="StrategyQuant中内置了大量的技术指标，为了保证StrategyQuant生成的策略与策略运行软件平台上表现一致性，几乎所有的的指标都重新做了完整的定义。
+ 
+因此在使用MT4/5，或Multicharts之前，首先是要要导入自定">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>StrategyQuant内置指标介绍 | QuantWin</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/easyicon_net_32.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+
+    <!-- =============== 插入数学公式支持代码 =============== -->
+    
+        <!-- KaTeX 支持 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" 
+            onload="renderMathInElement(document.body, { delimiters: [
+			    {left: '$$', right: '$$', display: true},
+			    {left: '$', right: '$', display: false},
+			    {left: '\\(', right: '\\)', display: false},
+			    {left: '\\[', right: '\\]', display: true}
+            ] })">
+        </script>
+    
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">QuantWin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>官网链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">QuantWin</div>
+        <div class="logo-desc">
+            
+            Strategyquant中文教学，期货外汇交易模型智能生成，交易策略分析
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			文章
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			官网链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">StrategyQuant内置指标介绍</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/StrategyQuant/">
+                                <span class="chip bg-color">StrategyQuant</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8C%87%E6%A0%87/">
+                                <span class="chip bg-color">指标</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                StrategyQuant
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-03-21
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>StrategyQuant</strong>中内置了大量的技术指标，为了保证<strong>StrategyQuant</strong>生成的策略与策略运行软件平台上表现一致性，几乎所有的的指标都重新做了完整的定义。</p>
+<a id="more"></a> 
+<p>因此在使用MT4/5，或<strong>Multicharts</strong>之前，首先是要要导入自定义指标。<br>
+有关指标导入，可以参考这里，提高Strategyquant创建期货交易策略的可靠性 <a href="https://quantwin.com.cn/2020/01/28/ti-gao-strategyquant-chuang-jian-qi-huo-jiao-yi-ce-lue-de-ke-kao-xing/" title="[external] [超链接]" target>提高Strategyquant创建期货交易策略的可靠性</a></p>
+<p>最新版的<strong>StrategyQuant</strong> X 更强大的功能，是使用自定义策略模板才生成特定类型的策略。 这显然需要了解每个指标到底是什么意思，因为很多指标本身，中外的描述就有差异，而且同个指标也有诸多不同的版本。所以接下来将分几期来梳理一下SQ X中的内置指标。</p>
+<h2 id="ADX指标">ADX指标</h2>
+<p>实际上是DMI指标。 SQ的ADX参数有两个，SQ_ADX（周期，输出类型），输出类型0为ADX，1为DI+ / PDI，2或其它为DI- / MDI。<br>
+ADX可以表示市场处在单边趋势中还是陷入整理震荡市，过低表示低迷没有明朗的涨跌方向，过高或预示着趋势短期内已经走地过远，有回归需求；而PDI/MDI可以表示市场是处于多头趋势还是空头趋势。</p>
+<blockquote>
+<p>LongEntrySignal = ((ADX(Main chart,ADXLowerPeriod1)[2] &lt; 20)<br>
+and GannHiLo(Main chart, GannHiLoPeriod1)[1] is in Down Trend);  #GannHiLoPeriod1=14 参数较小，标识走势 处在短期调整中</p>
+<p>ShortEntrySignal = ((ADX(Main chart,ADXLowerPeriod1)[2] &lt; 20)<br>
+and GannHiLo(Main chart, GannHiLoPeriod1)[1] is in UP Trend);</p>
+</blockquote>
+<p>象这样，就可以构建一个趋势收敛突破系统。</p>
+<h3 id="基于ADX推荐使用的信号：">基于ADX推荐使用的信号：</h3>
+<ul>
+<li>ADX is lower than level</li>
+<li>ADX is falling</li>
+<li>ADX is rising</li>
+</ul>
+<h2 id="Aroon指标">Aroon指标</h2>
+<p>Aroon指标由Tushar Chande于1995年发明，名称源自梵语&quot;黎明曙光&quot;，通过计算价格创新高/新低的时间间隔预测趋势变化。指标由三个核心组件构成：</p>
+<ul>
+<li><strong>Aroon Up</strong>：量化价格创新高的时间强度</li>
+<li><strong>Aroon Down</strong>：量化价格创新低的时间强度<br>
+SQ的Aroon有两个参数，第一个参数是时间周期，第2个参数为0时代表上升线，为1时代表下降线。<br>
+伴随着价格上升，上升线开始上升直到100，当价格创立高点回落，上升线也从100处开始下下行;之后，当价格不断下跌，下降线开始上升，直到100，当价格开始脱离底点反弹，下降线回落。</li>
+</ul>
+<h3 id="参数设置与计算逻辑">参数设置与计算逻辑</h3>
+<h3 id="1-周期选择策略">1. 周期选择策略</h3>
+<table>
+<thead>
+<tr>
+<th>周期长度</th>
+<th>适用场景</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7-14天</td>
+<td>短线交易</td>
+<td>敏感度高，需配合其他指标过滤</td>
+</tr>
+<tr>
+<td>25天</td>
+<td>标准配置</td>
+<td>平衡噪声与趋势识别能力</td>
+</tr>
+<tr>
+<td>30天+</td>
+<td>长线投资</td>
+<td>过滤短期波动，捕捉大趋势</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>计算公式：<br>
+$ AroonUp = \frac{N - HH}{N} \times 100 $<br>
+$ AroonDown = \frac{N - LL}{N} \times 100 $<br>
+其中：</p>
+<ul>
+<li>N：计算周期（默认25天）</li>
+<li>HH：最高价出现后的天数</li>
+<li>LL：最低价出现后的天数</li>
+</ul>
+</blockquote>
+<h3 id="传统用法">传统用法</h3>
+<ul>
+<li>当 AroonUp大于AroonDown，并且AroonUp大于50，多头开仓；</li>
+<li>当 AroonUp小于AroonDown，或者AroonUp小于50，多头平仓；</li>
+<li>当 AroonDown大于AroonUp，并且AroonDown大于50，空头开仓；</li>
+<li>当 AroonDown小于AroonUp，或者AroonDown小于50，空头平仓；</li>
+</ul>
+<h3 id="基于Aroon推荐使用的信号：">基于Aroon推荐使用的信号：</h3>
+<ul>
+<li>aroon down falls from top</li>
+<li>aroon up rises from bottom</li>
+</ul>
+<h2 id="ATR指标">ATR指标</h2>
+<p>SQ X中的ATR指标有两个版本，SQ_ATR 和 SQ_MTATR，后者与国内常见的<strong>真实波幅</strong>ATR指标一致，使用简单算术平均的方法来计算波动率。</p>
+<h3 id="比较这两种ATR计算方式的差异。">比较这两种ATR计算方式的差异。</h3>
+<p>递归公式（SQ_ATR）的数据更平滑，因其通过权重衰减机制抑制突变，对新数据反应较慢。<br>
+简单算术平均（SQ_MTATR）所有时间点的数据权重一样，相比SQ_ATR起伏稍大一些。</p>
+<p>​递归公式（SQ_ATR）适用场景</p>
+<ul>
+<li>需要长期趋势跟踪的策略（如趋势跟随系统）；</li>
+<li>对噪声敏感的场景（如避免短期波动干扰信号）。<br>
+​<br>
+简单算术平均（SQ_MTATR）适用场景</li>
+<li>需快速响应短期变化的策略（如突破系统）；</li>
+<li>数据分布均匀且无需历史衰减的场景。</li>
+</ul>
+<p>国内多数散户会忽视像ATR这类指标，不过在程序化交易系统的设计中，ATR指标因其量化波动性的特性，可贯穿策略开发的多个核心环节。以下是ATR在机械交易系统中的关键应用方向及实现逻辑：</p>
+<h3 id="一、动态止损保护机制">一、动态止损保护机制</h3>
+<h4 id="1-初始止损设定">1. 初始止损设定</h4>
+<ul>
+<li>​<strong>公式</strong>：<br>
+<code>多头止损价 = 入场价 - K×ATR(N)</code><br>
+<code>空头止损价 = 入场价 + K×ATR(N)</code></li>
+<li>​<strong>参数范围</strong>：K=1.5-3（海龟交易法则采用2倍ATR）</li>
+<li>​<strong>优势</strong>：根据波动率动态调整止损间距，避免被短期噪音触发</li>
+</ul>
+<h4 id="2-追踪止损优化">2. 追踪止损优化</h4>
+<ul>
+<li>​<strong>动态通道</strong>：<br>
+<code>多头追踪止损 = 最高价回撤M×ATR</code><br>
+<code>空头追踪止损 = 最低价反弹M×ATR</code></li>
+<li>​<strong>实证案例</strong>：比特币趋势交易中，3倍ATR回撤阈值可捕捉80%以上主升浪</li>
+</ul>
+<hr>
+<h3 id="二、仓位规模动态调整">二、仓位规模动态调整</h3>
+<h4 id="1-跨品种风险均衡">1. 跨品种风险均衡</h4>
+<ul>
+<li>​<strong>计算公式</strong>：<br>
+<code>头寸规模 = 账户风险上限 / (ATR×合约乘数)</code></li>
+<li>​<strong>示例</strong>：10万账户，ATR=50点，合约乘数10，则持仓量=20手</li>
+</ul>
+<h4 id="2-波动率自适应仓位">2. 波动率自适应仓位</h4>
+<ul>
+<li>​<strong>策略逻辑</strong>：
+<ul>
+<li>ATR&lt;历史均值20% → 增仓30%</li>
+<li>ATR&gt;历史均值30% → 减仓50%</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="三、突破信号有效性验证">三、突破信号有效性验证</h3>
+<h4 id="1-波动扩张过滤假突破">1. 波动扩张过滤假突破</h4>
+<ul>
+<li>​<strong>过滤条件</strong>：<br>
+<code>当前ATR &gt; 5日ATR均值×1.2</code></li>
+<li>​<strong>效果</strong>：标普500突破策略胜率提升18%</li>
+</ul>
+<h4 id="2-ATR通道突破确认">2. ATR通道突破确认</h4>
+<ul>
+<li>​<strong>通道构建</strong>：<br>
+<code>上轨=开盘价+1.5×ATR</code><br>
+<code>下轨=开盘价-1.5×ATR</code></li>
+<li>​<strong>绩效指标</strong>：股指期货5分钟周期夏普比率达2.1</li>
+</ul>
+<hr>
+<h3 id="四、趋势强度量化评估">四、趋势强度量化评估</h3>
+<h4 id="1-趋势加速预警">1. 趋势加速预警</h4>
+<ul>
+<li>​<strong>判定条件</strong>：<br>
+<code>ATR的20日EMA斜率&gt;15度</code> + <code>价格&gt;50日均线</code></li>
+<li>​<strong>实战案例</strong>：黄金2024年行情提前3日发出强化信号</li>
+</ul>
+<h4 id="2-趋势衰竭识别">2. 趋势衰竭识别</h4>
+<ul>
+<li>​<strong>背离检测</strong>：<br>
+<code>价格创新高</code> + <code>14日ATR_SMA下降</code></li>
+<li>​<strong>风险规避</strong>：纳斯达克ETF回测减少46%反转亏损</li>
+</ul>
+<hr>
+<h3 id="五、目标止盈策略构建">五、目标止盈策略构建</h3>
+<h4 id="1-固定波动倍数止盈">1. 固定波动倍数止盈</h4>
+<ul>
+<li>​<strong>分层止盈</strong>：
+<ul>
+<li>第一目标：1×ATR平仓50%</li>
+<li>第二目标：3×ATR追踪止损</li>
+</ul>
+</li>
+<li>​<strong>盈亏比</strong>：EUR/USD测试达3.2:1</li>
+</ul>
+<h4 id="2-ATR比例缩放止盈">2. ATR比例缩放止盈</h4>
+<ul>
+<li>​<strong>动态公式</strong>：<br>
+<code>目标价=入场价 + (当前ATR/历史ATR中位数)×基准盈利</code></li>
+<li>​<strong>收益对比</strong>：年化收益率提升27%</li>
+</ul>
+<hr>
+<h3 id="六、参数优化与风险控制">六、参数优化与风险控制</h3>
+<h4 id="1-周期参数自适应">1. 周期参数自适应</h4>
+<ul>
+<li>​<strong>策略匹配</strong>：
+<ul>
+<li>短线（&lt;3日）：7日ATR</li>
+<li>长线（&gt;20日）：21日ATR</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-极端波动熔断">2. 极端波动熔断</h4>
+<ul>
+<li>​<strong>风控规则</strong>：<br>
+<code>单日ATR &gt; 20日ATR均值×3 → 强制减仓50%</code></li>
+<li>​<strong>回撤控制</strong>：2024年3月美股闪崩减少9.2%损失</li>
+</ul>
+<hr>
+<h4 id="四级目录有吗？">四级目录有吗？</h4>
+<p><em>（未完待续）</em></p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://quantwin.com.cn" rel="external nofollow noreferrer">QuantWin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://quantwin.com.cn/posts/61288/">http://quantwin.com.cn/posts/61288/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://quantwin.com.cn" target="_blank">QuantWin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/StrategyQuant/">
+                                    <span class="chip bg-color">StrategyQuant</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8C%87%E6%A0%87/">
+                                    <span class="chip bg-color">指标</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/posts/61288/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="StrategyQuant内置指标介绍">
+                        
+                        <span class="card-title">StrategyQuant内置指标介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            StrategyQuant中内置了大量的技术指标，为了保证StrategyQuant生成的策略与策略运行软件平台上表现一致性，几乎所有的的指标都重新做了完整的定义。
+ 
+因此在使用MT4/5，或Multicharts之前，首先是要要导入自定
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                    StrategyQuant
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/StrategyQuant/">
+                        <span class="chip bg-color">StrategyQuant</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%8C%87%E6%A0%87/">
+                        <span class="chip bg-color">指标</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/6562/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="SQX129正式发布">
+                        
+                        <span class="card-title">SQX129正式发布</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            重大更新！号称基本修复已知重大Bug！StrategyQuant X 最新稳定本129于8月11日正式发布。
+
+修订Hammer, PiercingLine的蜡烛图形态定义错误
+修订IsRising / IsFalling的错误
+增加了Fr
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                    StrategyQuant
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/StrategyQuant/">
+                        <span class="chip bg-color">StrategyQuant</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%89%88%E6%9C%AC/">
+                        <span class="chip bg-color">版本</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: QuantWin<br />'
+            + '文章作者: QuantWin<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://quantwin.com.cn" target="_blank">QuantWin</a>
+        
+            <br>
+            
+            
+            
+            
+            
+        
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:997763012@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

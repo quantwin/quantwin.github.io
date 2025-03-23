@@ -1,0 +1,1167 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="StrategyQuant导入测试数据, Strategyquant,策略,模型,EA,程序化">
+    <meta name="description" content="StrategyQuant创建交易策略的大体流程分为:
+
+导入历史价格数据，新交易品种需要先设定品种属性
+设置Builde有关选项，运行开始生成策略
+对策略进行健壮测试
+将策略复制到相应程序化交易平台测试运行
+
+  
+本篇文章将介绍如果在S">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>StrategyQuant导入测试数据 | QuantWin</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/easyicon_net_32.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+
+    <!-- =============== 插入数学公式支持代码 =============== -->
+    
+        <!-- KaTeX 支持 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" 
+            onload="renderMathInElement(document.body, { delimiters: [
+			    {left: '$$', right: '$$', display: true},
+			    {left: '$', right: '$', display: false},
+			    {left: '\\(', right: '\\)', display: false},
+			    {left: '\\[', right: '\\]', display: true}
+            ] })">
+        </script>
+    
+    
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper head-container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">QuantWin</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>文章</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>官网链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">QuantWin</div>
+        <div class="logo-desc">
+            
+            Strategyquant中文教学，期货外汇交易模型智能生成，交易策略分析
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			文章
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			官网链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">StrategyQuant导入测试数据</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/StrategyQuant/">
+                                <span class="chip bg-color">StrategyQuant</span>
+                            </a>
+                        
+                            <a href="/tags/MultiCharts/">
+                                <span class="chip bg-color">MultiCharts</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE/">
+                                <span class="chip bg-color">数据</span>
+                            </a>
+                        
+                            <a href="/tags/Session/">
+                                <span class="chip bg-color">Session</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                StrategyQuant
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-23
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>StrategyQuant</strong>创建交易策略的大体流程分为:</p>
+<ul>
+<li>导入历史价格数据，新交易品种需要先设定品种属性</li>
+<li>设置Builde有关选项，运行开始生成策略</li>
+<li>对策略进行健壮测试</li>
+<li>将策略复制到相应程序化交易平台测试运行</li>
+</ul>
+<a id="more"></a>  
+<p>本篇文章将介绍如果在Strategyquant里创建品种，设定品种有属性，并导入从Multicharts中导出的历史数据。</p>
+<h1>设置品种</h1>
+<p><img src="/posts/48152/dataset.png" alt></p>
+<p>首先切换到<strong>Data Manager 数据管理</strong>功能，按照上图所示，左键单击<strong>File import</strong>，然后选择<strong>Add sysmbol</strong>。</p>
+<p><img src="/posts/48152/addsymbol.png" alt></p>
+<p>上半部分是设定品种名称以及K线的时间是K线开始时间还是结束时间，MultiCharts里导出的数据的是K线结束的时间。下半部分是指定具体的品种属性，如果<strong>Instrument</strong>下拉选择框没有这个品种属性，需要<strong>Add new instruement</strong>来添加品种属性。一个品种属性，可以对应多个品种（名称），譬如我可以添加黄金主连合约价格、黄金指数合约价格、黄金主连价差调整连续合约或者黄金30分钟K线数据，都是对应黄金这个品种属性。</p>
+<p><img src="/posts/48152/instru.png" alt></p>
+<ul>
+<li>Instrument 品种属性名称，名称随便起，不过建议用有意义、易区分的名称</li>
+<li>Description 品种描述，可以忽略不填</li>
+<li>Data type 数据类型，主要是区分是外汇，还是期货或股票等</li>
+<li>Point value 点价值，即一标准手的合约价值。以期货为例，与交易单位和报价单位相关。黄金期货交易单位是1000克/手，报价单位是元/克，所以point value 是 1000；鸡蛋交易单位是5吨/手，而报价单位是元/0.5吨，所以point value是10；股指期货IF的合约乘数为每点300元，即point value为300。</li>
+<li>pip/tick size 用于结算的最小一跳，对期货而言即最小一跳，如黄金期货为0.02元/克。外汇是小数点4位那个时代的报价精度。</li>
+<li>pip/tick step 报价的最小一跳，对期货而言与pip/tick size是一样的。外汇已经普遍是5位小数报价了。</li>
+<li>Default spread 价差成本，主要针对外汇而言，是交易成本。期货品种忽略此项。</li>
+</ul>
+<p>手续费设置，是双边合计计算的。国内期货的征收方式主要是合约价值百分比和每手固定金额两种方式。</p>
+<ul>
+<li>No  不设置手续费</li>
+<li>per Trade  每笔交易固定金额</li>
+<li>Percentage based   合约价值百分比</li>
+<li>Size based   每手固定金额</li>
+</ul>
+<p>设置完毕后，点击Save保存，返回到<strong>Edit symbol</strong>品种设置界面，点击Save保存。</p>
+<h1>导入数据</h1>
+<p>如果我想导入黄金主连合约数据和黄金指数合约数据，只有增添加两个品种然后都指定是黄金期货属性，因为这两个价格序列是完全不同的价格序列。而如果我想用到30分钟K线的黄金主连数据，也可能会用到60分钟K线黄金主连数据，就有两种方式。</p>
+<ul>
+<li>新建两个品种，如AU_30MIn，AU_60min</li>
+<li>或导入1分钟数据，然后让SQ合成30分钟和60分钟数据</li>
+</ul>
+<p>第一种方式的好处是与原平台数据完全一致，弊端是可能需要一个品种做多次导入；第二种方式好处一次导入可以供不同周期调用，包括非常见的分钟周期，如20分钟，45分钟，2小时之类 ；另外可以使用1分钟精细数据回测，绩效评价更准确（目前只支持MT4，MT5）。但要求必须设置好交易小节Sessions，否则会导致大周期数据合成错误，另外目前国内期货夜盘品种，用1分钟周期数据合成日线数据都不准确。因为老外根本不能想象国内市场的这种结算日的划分方式。</p>
+<p>个人建议：</p>
+<ul>
+<li>分钟级别策略，如30分钟，60分钟，建议使用1分钟数据</li>
+<li>日线级别策略，直接使用日线数据</li>
+</ul>
+<h2 id="从Multicharts导出历史数据">从Multicharts导出历史数据</h2>
+<p>在Multihcarts里新建一个<strong>图表窗口</strong>，添加黄金期货，</p>
+<p><img src="/posts/48152/au_a.png" alt><br>
+<img src="/posts/48152/au_b.png" alt></p>
+<p>待历史数据全部载入完成，导入该数据,注意,不要选择<strong>同步导出指标数据</strong><br>
+<img src="/posts/48152/export.png" alt><br>
+<img src="/posts/48152/export2.png" alt></p>
+<h2 id="StrategyQuant导入历史数据">StrategyQuant导入历史数据</h2>
+<p>在SQ中，接上一步，在Data品种列表里找到刚才添加的品种<strong>SHFE_AU</strong>并选中，然后点击上方的<strong>File import</strong> - <strong>Import file</strong>，</p>
+<p><img src="/posts/48152/importa.png" alt></p>
+<p>然后弹出数据导入窗口,</p>
+<p><img src="/posts/48152/importb.png" alt></p>
+<p>首先需要设置文件格式，对于MC导出的历史数据文件，首先要跳过第一行的名称，选择逗号分割，设定日期格式，并为数据每列指定是什么栏目，最后可以点击中间的<strong>Save</strong>来保存成预设的数据格式，方便以后数据格式的识别与导入。设置完成后<strong>Start Import</strong>开始导入，当下方品种列表靠右侧列显示Completed即表示导入完成。</p>
+<h1>设置Sessions 交易小节</h1>
+<p><img src="/posts/48152/sessioninmc.png" alt></p>
+<p>Sessions设置主要作用是标识交易时段的开始与结束，以及当天交易最后结束结算的时间。如果你在SQ中使用1分钟数据来合成大周期级别的数据，这个交易小节设置非常重要。</p>
+<p>首先，在Multicharts中打开报<strong>报价管理器</strong>，找到相应的期货市场与品种，然后在品种合约（该品种任意合约）双击，最后切换到<strong>交易时段</strong>标签页，看到MC中的Sessions设置。根据这里的设置，在SQ中增加Sessions设置。</p>
+<p><img src="/posts/48152/sessioninsq.png" alt></p>
+<p>在SQ中，依次找到<strong>Data manager</strong>，<strong>Session</strong>，<strong>Add session</strong>，找开添加小节设置模板<strong>Add session template</strong>。<strong>Session name</strong>随便写，只要合成数据或者策略生成回测中的<strong>Trading options</strong>正确指定品种对应的小节设置即可。我们这里取名为AU_AG，因为黄金、白银具有完全相同的交易时间，这个Sessions设置可以供这两个品种使用。<br>
+目前SQ这里的设置并不是很友好，或许开发者并不了解国内市场设置的繁琐程度。我们需要对<strong>每一天的每个时段</strong>单独ADD添加。注意这里的小节划分或许与交易所实际的规定并不完全一致，因为这里的原则，是将SQ中的设置与你所运行策略的交易平台，如Multicharts中设置的小节划分保持一致。</p>
+<p><strong>注意每天的13:00-15:00时间段，最每个交易日结算前的最后一个交易时段，所以SEOC设置为YES</strong>。</p>
+<p>最后，我们可以使用Data manager中的Export导出功能，导出某个大周期，譬如30分钟周期数据，然后与MC中导出的30分钟周期数据进行对比。</p>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://quantwin.com.cn" rel="external nofollow noreferrer">QuantWin</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://quantwin.com.cn/posts/48152/">http://quantwin.com.cn/posts/48152/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://quantwin.com.cn" target="_blank">QuantWin</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/StrategyQuant/">
+                                    <span class="chip bg-color">StrategyQuant</span>
+                                </a>
+                            
+                                <a href="/tags/MultiCharts/">
+                                    <span class="chip bg-color">MultiCharts</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE/">
+                                    <span class="chip bg-color">数据</span>
+                                </a>
+                            
+                                <a href="/tags/Session/">
+                                    <span class="chip bg-color">Session</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.jpg" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/38795/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="提高Strategyquant创建期货交易策略的可靠性">
+                        
+                        <span class="card-title">提高Strategyquant创建期货交易策略的可靠性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            对于程序化交易，我们经常会听到质疑的声音，这需要客观对待。很多事物都有他的优势与劣势，程序化交易也不例外。我们这里说的程序化交易是指，将交易逻辑写成策略信号，在某个交易软件上进行自动买卖的交易方式。我之所以选择程序化交易，是基于以几点考虑：
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                    StrategyQuant
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/StrategyQuant/">
+                        <span class="chip bg-color">StrategyQuant</span>
+                    </a>
+                    
+                    <a href="/tags/MultiCharts/">
+                        <span class="chip bg-color">MultiCharts</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE/">
+                        <span class="chip bg-color">数据</span>
+                    </a>
+                    
+                    <a href="/tags/Session/">
+                        <span class="chip bg-color">Session</span>
+                    </a>
+                    
+                    <a href="/tags/Tradestation/">
+                        <span class="chip bg-color">Tradestation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/1423/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="StrategyQuant界面菜单介绍3">
+                        
+                        <span class="card-title">StrategyQuant界面菜单介绍3</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在遗传编程选项中的进化控制中，我们会根据种群策略在历史数据的样本内数据（验证部分）的表现来决定进化过程是否继续还是重新生成初始种群开始。这里可以用到不同的数据集，样本内（全部），样本内（训练部分），样本外（验证部分）。
+数据分段设置，是减少
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/StrategyQuant/" class="post-category">
+                                    StrategyQuant
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/StrategyQuant/">
+                        <span class="chip bg-color">StrategyQuant</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%95%8C%E9%9D%A2/">
+                        <span class="chip bg-color">界面</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%8F%9C%E5%8D%95/">
+                        <span class="chip bg-color">菜单</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%AD%E6%96%87/">
+                        <span class="chip bg-color">中文</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B1%89%E5%8C%96/">
+                        <span class="chip bg-color">汉化</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE/">
+                        <span class="chip bg-color">数据</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%86%85/">
+                        <span class="chip bg-color">样本内</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%B7%E6%9C%AC%E5%A4%96/">
+                        <span class="chip bg-color">样本外</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: QuantWin<br />'
+            + '文章作者: QuantWin<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://quantwin.com.cn" target="_blank">QuantWin</a>
+        
+            <br>
+            
+            
+            
+            
+            
+        
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:997763012@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
